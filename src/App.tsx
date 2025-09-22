@@ -11,6 +11,8 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ModeToggle } from "@/components/mode-toggle";
 
 type Person = {
   firstName: string;
@@ -103,11 +105,16 @@ function App() {
   };
 
   return (
-    <>
-      <h1 className="text-3xl font-bold underline text-red-500 ">
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <ModeToggle />
+      <div className="bg-background text-foreground dark:text-4xl dark:text-white ">
+        test . ..{" "}
+      </div>
+      <div className="bg-primary text-primary-foreground">Hello</div>
+      <h1 className="text-3xl font-bold underline dark:text-yellow-500 text-red-500 ">
         Hello world!
       </h1>
-      <Bar data={dataChart} />;
+      <Bar data={dataChart} className=" dark:bg-amber-50" />;
       <div className="p-2">
         <table>
           <thead>
@@ -179,7 +186,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
+    </ThemeProvider>
   );
 }
 
