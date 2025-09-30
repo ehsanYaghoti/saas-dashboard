@@ -1,5 +1,5 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/common/app-sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/common/sidebar";
 // import { findState } from "@/utils/sidebar";
 
 
@@ -14,8 +14,7 @@ export default function SidebarLayout({
   return (
     <SidebarProvider  defaultOpen={true} >
       <AppSidebar />
-      <main className=" w-full " >
-        <SidebarTrigger className="m-2" />
+      <main className="w-full" >
         {children}
       </main>
     </SidebarProvider>
