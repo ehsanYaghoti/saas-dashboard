@@ -14,9 +14,7 @@ export default function SidebarLayout({
   return (
     <SidebarProvider  defaultOpen={true} >
       <AppSidebar />
-      <main className="w-full" >
-        {children}
-      </main>
+      {children}
     </SidebarProvider>
   );
 }
