@@ -14,10 +14,10 @@ function App() {
           <Header />
           <main className="w-full h-full bg-[#FAFCFE] flex flex-col gap-8 shrink grow basis-auto  dark:bg-gray-900 p-10 ">
             <div className="flex flex-wrap items-center gap-5 w-full justify-between ">
-                <KpiCard title="Total Income" price profit amount={0.00} description={{num : 0.00, explain : 'Compared to last month'}} />
-                <KpiCard title="Profit" price profit={false} amount={0.00} description={{num : 0.00, explain : 'Compared to last month'}} />
-                <KpiCard title="Total Views" price={false} profit amount={0} description={{num : 0.00, explain : 'Compared to last month'}} />
-                <KpiCard title="Conversation Rate" price profit amount={0.00} description={{num : 0.00, explain : 'Compared to last month'}} />
+                <KpiCard title="Total Income"  profit amount={'$ 0.00'} description={{num : 0.00, explain : 'Compared to last month'}} />
+                <KpiCard title="Profit"  profit={false}  amount={'$ 0.00'} description={{num : 0.00, explain : 'Compared to last month'}} />
+                <KpiCard title="Total Views" profit amount={'0'} description={{num : 0.00, explain : 'Compared to last month'}} />
+                <KpiCard title="Conversation Rate" profit amount={'0,00 %'} description={{num : 0.00, explain : 'Compared to last month'}} />
             </div>
           </main>
         </div>
