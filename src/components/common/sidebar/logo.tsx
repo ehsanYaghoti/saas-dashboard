@@ -1,4 +1,4 @@
-import { SidebarTrigger } from "../ui/sidebar";
+import { SidebarTrigger } from "../../ui/sidebar";
 
 export function Logo({collapsed} : { collapsed : boolean }) {
   return (

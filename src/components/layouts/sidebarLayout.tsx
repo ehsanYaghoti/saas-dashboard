@@ -1,5 +1,5 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/common/sidebar";
+import { AppSidebar } from "@/components/common/sidebar/sidebar";
 // import { findState } from "@/utils/sidebar";
 
 
