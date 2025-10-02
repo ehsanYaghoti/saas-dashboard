@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme/theme-provider";
 import SidebarLayout from "@/components/layouts/sidebarLayout";
 import Header from "@/components/common/header/header";
 import KpiCard from "./components/common/cards/kpi";
+import { ChartLine } from "./components/common/charts/lineChart";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
                 <KpiCard title="Profit"  profit={false}  amount={'$ 0.00'} description={{num : 0.00, explain : 'Compared to last month'}} />
                 <KpiCard title="Total Views" profit amount={'0'} description={{num : 0.00, explain : 'Compared to last month'}} />
                 <KpiCard title="Conversation Rate" profit amount={'0,00 %'} description={{num : 0.00, explain : 'Compared to last month'}} />
+            </div>
+            <div className=" w-[60%] bg-white p-8 rounded-lg border border-slate-200 shadow-md " >
+                <ChartLine />
             </div>
           </main>
         </div>
