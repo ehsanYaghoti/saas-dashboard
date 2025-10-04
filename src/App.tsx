@@ -20,7 +20,7 @@ function App() {
                 <KpiCard title="Total Views" profit amount={'0'} description={{num : 0.00, explain : 'Compared to last month'}} />
                 <KpiCard title="Conversation Rate" profit amount={'0,00 %'} description={{num : 0.00, explain : 'Compared to last month'}} />
             </div>
-            <div className=" w-[60%] bg-white p-8 rounded-lg border border-slate-200 shadow-md " >
+            <div className=" w-[60%] bg-white p-8 rounded-lg border border-slate-200 shadow-md flex items-center justify-center " >
                 <ChartLine />
             </div>
           </main>
