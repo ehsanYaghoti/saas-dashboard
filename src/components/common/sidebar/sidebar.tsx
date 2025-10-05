@@ -93,14 +93,14 @@ export function AppSidebar() {
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton
+              <div
                 className={cn(
                   "flex items-center",
                   state === "collapsed" &&
                     "!p-0 justify-center group-data-[collapsible=icon]:p-0! group-data-[collapsible=icon]:self-center "
                 )}
               >
-                <Logo collapsed={state === "collapsed"} />
+                 <Logo collapsed={state === "collapsed"} />
                 <h1
                   className={`font-bold text-2xl text-primary-4 dark:text-white ${
                     state === "collapsed" && "hidden"
@@ -111,7 +111,7 @@ export function AppSidebar() {
                 <SidebarTrigger
                   className={cn(" ml-auto", state === "collapsed" && "hidden")}
                 />
-              </SidebarMenuButton>
+              </div>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>

@@ -63,13 +63,7 @@ export default function HeaderStatic() {
               <div className=" w-8 h-8 border rounded-full flex items-center justify-center  ">
                 <User className=" w-5 cursor-pointer " />
               </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="size-6 cursor-pointer p-2 "
-              >
-                <ChevronDown className=" w-6 cursor-pointer " />
-              </Button>
+              <ChevronDown className=" w-4 cursor-pointer " />
             </DropdownMenuTrigger>
             <DropdownMenuContent className=" bg-white p-3 rounded-2xl border mt-5">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
