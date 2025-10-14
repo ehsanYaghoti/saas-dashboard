@@ -33,7 +33,7 @@ ChartJS.register(
 
 export function ChartLine() {
   return (
-    <div className="flex flex-col w-[60%] bg-white p-6 rounded-lg border border-slate-200 shadow-md relative ">
+    <div className="flex flex-col w-[calc(60%-32px)] bg-white p-6 rounded-lg border border-slate-200 shadow-md relative ">
       <h3 className="text-lg font-semibold text-slate-700 mb-2">
         Revenue Over Time
       </h3>

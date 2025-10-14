@@ -1,4 +1,4 @@
-import type { LineProps } from "@/types";
+import type { LineProps } from "@/types/chart";
 
 const labels = [
   "Mar 2023",

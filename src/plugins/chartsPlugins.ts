@@ -1,4 +1,4 @@
-import type { Chart } from "chart.js";
+import type { Chart, Plugin } from "chart.js";
 
 
 const getOrCreateLegendList = (chart : Chart , id : string) => {
@@ -22,7 +22,7 @@ const getOrCreateLegendList = (chart : Chart , id : string) => {
 
 export const htmlLegendPlugin = {
   id: 'htmlLegend',
-  afterUpdate(chart : any, args : any, options : any ) {
+  afterUpdate(chart : any , args : any , options : any ) {
     const ul = getOrCreateLegendList(chart, options.containerID);
 
     // Remove old legend items
@@ -42,13 +42,14 @@ export const htmlLegendPlugin = {
       li.style.flexDirection = 'row';
 
       li.onclick = () => {
-        const {type} = chart.config;
-        if (type === 'pie' || type === 'doughnut') {
-          // Pie and doughnut charts only have a single dataset and visibility is per item
-          chart.toggleDataVisibility(item.index);
-        } else {
-          chart.setDatasetVisibility(item.datasetIndex, !chart.isDatasetVisible(item.datasetIndex));
-        }
+        // const {type} = chart.config.options;
+        // if (type === 'pie' || type === 'doughnut') {
+        //   // Pie and doughnut charts only have a single dataset and visibility is per item
+        //   chart.toggleDataVisibility(item.index);
+        // } else {
+        //   chart.setDatasetVisibility(item.datasetIndex, !chart.isDatasetVisible(item.datasetIndex));
+        // }
+        chart.setDatasetVisibility(item.datasetIndex, !chart.isDatasetVisible(item.datasetIndex));
         chart.update();
       };
 
@@ -105,7 +106,7 @@ export const htmlLegendPlugin = {
   }
 };
 
-export const verticalHoverLine = {
+export const verticalHoverLine : Plugin = {
   id: "verticalHoverLine",
   beforeDatasetsDraw(chart : Chart) {
     const {

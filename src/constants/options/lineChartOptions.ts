@@ -1,4 +1,4 @@
-import type { LineProps } from "@/types";
+import type { LineProps } from "@/types/chart";
 // import type { LineOptions, PluginOptionsByType } from "chart.js";
 
 export const lineChartOptions: LineProps["options"] = {
