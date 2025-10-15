@@ -1,8 +1,8 @@
 import type { LineProps } from "@/types/chart";
+import { titleTypography } from "../charts";
 // import type { LineOptions, PluginOptionsByType } from "chart.js";
 
 export const lineChartOptions: LineProps["options"] = {
-  backgroundColor: "red",
   responsive: true,
   interaction: {
     mode: "index",
@@ -118,10 +118,7 @@ export const lineChartOptions: LineProps["options"] = {
     title: {
       display: false,
       text: "Revenue Over Time",
-      position: "top",
-      align: "start",
-      font: { size: 18, weight: 600, family: "Inter" },
-      color: "rgba(0,0,0,0.8)",
+      ...titleTypography
     },
     tooltip: {
       callbacks: {

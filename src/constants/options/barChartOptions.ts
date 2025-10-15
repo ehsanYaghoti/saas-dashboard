@@ -1,4 +1,5 @@
 import type { BarProps } from "@/types/chart";
+import { titleTypography } from "../charts";
 
 export const barChartOptions: BarProps["options"] = {
   responsive: true,
@@ -51,14 +52,12 @@ export const barChartOptions: BarProps["options"] = {
 
     title: {
       display: true,
-      align: "start",
       fullSize : true,
       text: "Session by Country",
-      font: { size: 18 , weight : 600 },
       padding  : {
         bottom  : 10
       },
-      color: "rgba(0,0,0,0.7)",
+      ...titleTypography
     },
     subtitle: {
       display: true,

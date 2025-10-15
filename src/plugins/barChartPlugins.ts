@@ -80,7 +80,7 @@ export const imageLabels: Plugin = {
 
     data.datasets[0].data.forEach((_, index) => {
     //   const leftPadding : number = +chart.options.layout?.padding?.left | 30;
-      console.log(chart.options.layout?.padding);
+    //   console.log(chart.options.layout?.padding);
       const flag = new Image();
       flag.src = images[index];
       ctx.drawImage(
