@@ -8,7 +8,8 @@ import KpiCard from "./components/common/cards/kpi";
 import { ChartLine } from "./components/common/charts/lineChart";
 import { HorizontalBarChart } from "./components/common/charts/horizontalBarChart";
 import { Button } from "./components/ui/button";
-import { Download, Ellipsis } from "lucide-react";
+import { Ellipsis } from "lucide-react";
+import RadarChart from "./components/common/charts/radarChart";
 
 function App() {
   return (
@@ -45,7 +46,7 @@ function App() {
             </div>
             <div className="w-full flex gap-8">
               <ChartLine />
-              <div className="flex flex-col items-center w-[calc(40%-32px)] grow bg-white p-6 rounded-lg border border-slate-200 shadow-md relative">
+              <div className="flex flex-col items-center w-[40%] bg-white p-6 rounded-lg border border-slate-200 shadow-md relative">
                 <HorizontalBarChart />
                 <div className=" flex items-center gap-1 text-slate-500 absolute right-6 top-6 ">
                   <Button
@@ -57,6 +58,15 @@ function App() {
                   </Button>
                 </div>
               </div>
+            </div>
+            <div className="w-full h-auto flex gap-8">
+                <div className="flex flex-col items-center w-1/3 min-h-72 bg-white p-6 rounded-lg border border-slate-200 shadow-md relative"  >
+                    <RadarChart />
+                </div>
+                <div className="flex flex-col items-center w-1/3 min-h-72 bg-white p-6 rounded-lg border border-slate-200 shadow-md relative"  >
+                </div>
+                <div className="flex flex-col items-center w-1/3 min-h-72 bg-white p-6 rounded-lg border border-slate-200 shadow-md relative"  >
+                </div>
             </div>
           </main>
         </div>
