@@ -1,9 +1,9 @@
 import type { LineProps } from "@/types/chart";
-import { titleTypography } from "../charts";
+import { commonChartOptions, titleTypography } from "../charts";
 // import type { LineOptions, PluginOptionsByType } from "chart.js";
 
 export const lineChartOptions: LineProps["options"] = {
-  responsive: true,
+  ...commonChartOptions,
   interaction: {
     mode: "index",
     intersect: false,
@@ -118,7 +118,7 @@ export const lineChartOptions: LineProps["options"] = {
     title: {
       display: false,
       text: "Revenue Over Time",
-      ...titleTypography
+      ...titleTypography,
     },
     tooltip: {
       callbacks: {

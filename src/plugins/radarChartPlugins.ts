@@ -23,14 +23,14 @@ export const radarTickLabels = {
       return degrees * (Math.PI / 180);
     }
 
-    console.log(xCenter, yCenter, drawingArea, angle);
+    // console.log(xCenter, yCenter, drawingArea, angle);
 
     data.datasets[0]?.data?.forEach((dataPoint, index: number) => {
       ctx.save();
 
       const degrees = (angle * index) - 30;
       const radians = degreeToRadian(degrees);
-      const xCoor = Math.cosh(radians);
+      const xCoor = Math.cos(radians);
       const yCoor = -drawingArea + Math.sin(radians);
 
       ctx.translate(xCenter, yCenter);
