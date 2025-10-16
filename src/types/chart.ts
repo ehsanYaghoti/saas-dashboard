@@ -16,3 +16,10 @@ export interface RadarProps {
   data: ChartData<"radar">;
   plugin : Plugin<"radar">;
 }
+
+export interface DoughnutProps {
+  chart : Chart<"doughnut">;
+  options: ChartOptions<"doughnut">;
+  data: ChartData<"doughnut">;
+  plugin : Plugin<"doughnut">;
+}

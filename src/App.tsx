@@ -10,6 +10,7 @@ import { HorizontalBarChart } from "./components/common/charts/horizontalBarChar
 import { Button } from "./components/ui/button";
 import { Ellipsis } from "lucide-react";
 import RadarChart from "./components/common/charts/radarChart";
+import { DoughnutChart } from "./components/common/charts/doughnutChart";
 
 function App() {
   return (
@@ -46,7 +47,7 @@ function App() {
             </div>
             <div className="w-full flex gap-8">
               <ChartLine />
-              <div className="flex flex-col items-center w-[40%] bg-white p-6 rounded-lg border border-slate-200 shadow-md relative">
+              <div className="flex flex-col items-center w-1/3 bg-white p-6 rounded-lg border border-slate-200 shadow-md relative">
                 <HorizontalBarChart />
                 <div className=" flex items-center gap-1 text-slate-500 absolute right-6 top-6 ">
                   <Button
@@ -60,13 +61,41 @@ function App() {
               </div>
             </div>
             <div className="w-full h-auto flex gap-8">
-                <div className="flex flex-col items-center w-1/3 min-h-72 bg-white p-6 rounded-lg border border-slate-200 shadow-md relative"  >
-                    <RadarChart />
+              <div className="flex flex-col items-center w-1/3 min-h-72 bg-white p-6 rounded-lg border border-slate-200 shadow-md relative">
+                <RadarChart />
+                <div className=" flex items-center gap-1 text-slate-500 absolute right-6 top-6 ">
+                  <Button
+                    className="cursor-pointer "
+                    variant="ghost"
+                    size="icon"
+                  >
+                    <Ellipsis />
+                  </Button>
                 </div>
-                <div className="flex flex-col items-center w-1/3 min-h-72 bg-white p-6 rounded-lg border border-slate-200 shadow-md relative"  >
+              </div>
+              <div className="flex flex-col items-center w-1/3 min-h-72 bg-white px-6 py-6 rounded-lg border border-slate-200 shadow-md relative">
+                <DoughnutChart />
+                <div className=" flex items-center gap-1 text-slate-500 absolute right-6 top-6 ">
+                  <Button
+                    className="cursor-pointer "
+                    variant="ghost"
+                    size="icon"
+                  >
+                    <Ellipsis />
+                  </Button>
                 </div>
-                <div className="flex flex-col items-center w-1/3 min-h-72 bg-white p-6 rounded-lg border border-slate-200 shadow-md relative"  >
+              </div>
+              <div className="flex flex-col items-center w-1/3 min-h-72 bg-white p-6 rounded-lg border border-slate-200 shadow-md relative">
+                <div className=" flex items-center gap-1 text-slate-500 absolute right-6 top-6 ">
+                  <Button
+                    className="cursor-pointer "
+                    variant="ghost"
+                    size="icon"
+                  >
+                    <Ellipsis />
+                  </Button>
                 </div>
+              </div>
             </div>
           </main>
         </div>
