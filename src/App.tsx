@@ -11,6 +11,7 @@ import { Button } from "./components/ui/button";
 import { Ellipsis } from "lucide-react";
 import RadarChart from "./components/common/charts/radarChart";
 import { DoughnutChart } from "./components/common/charts/doughnutChart";
+import { GaugeChart } from "./components/common/charts/gaugeChart";
 
 function App() {
   return (
@@ -86,6 +87,7 @@ function App() {
                 </div>
               </div>
               <div className="flex flex-col items-center w-1/3 min-h-72 bg-white p-6 rounded-lg border border-slate-200 shadow-md relative">
+                <GaugeChart />
                 <div className=" flex items-center gap-1 text-slate-500 absolute right-6 top-6 ">
                   <Button
                     className="cursor-pointer "
