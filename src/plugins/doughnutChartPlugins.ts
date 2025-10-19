@@ -2,6 +2,65 @@ import type { DoughnutProps } from "@/types/chart";
 import img1 from "@/assets/charts/tokopedia.svg";
 import img2 from "@/assets/charts/alibaba.svg";
 import img3 from "@/assets/charts/amazon.svg";
+import { degreeToRadian } from "@/utils/charts";
+
+
+export const dashedFullArc: DoughnutProps["plugin"] = {
+  id: "dashedFullArc",
+  afterDatasetDraw(chart) {
+    const {
+      ctx,
+      chartArea: { left, bottom , width , height},
+    } = chart;
+
+
+    console.log((width + height) / 5)
+
+    ctx.save();
+
+    // dashed arc
+    ctx.setLineDash([1, 1]);
+
+    ctx.beginPath();
+    ctx.arc(left + width / 2, bottom - height / 2  , (width + height) / 8 , degreeToRadian(0), degreeToRadian(360) , true);
+
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = "#D9DCE4";
+
+    ctx.stroke();
+
+    ctx.setLineDash([]);
+
+    // line arc 1
+    ctx.beginPath();
+    ctx.arc(left + width / 2, bottom - height / 2, ((width + height) / 4) + 5 , degreeToRadian(0), degreeToRadian(360) , true);
+
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#E2E6EC";
+
+    ctx.stroke();
+
+    // line arc 2
+    ctx.beginPath();
+    ctx.arc(left + width / 2, bottom - height / 2, ((width + height) / 4) + 10 , degreeToRadian(0), degreeToRadian(360) , true);
+
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = "#F1F3F5";
+
+    ctx.stroke();
+
+    // line arc 3
+    ctx.beginPath();
+    ctx.arc(left + width / 2, bottom - height / 2, ((width + height) / 4) + 25 , degreeToRadian(0), degreeToRadian(360) , true);
+
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#EAEEF3";
+
+    ctx.stroke();
+
+
+  },
+};
 
 let images : HTMLImageElement[] = [img1, img2, img3].map((image) => {
   const img = new Image();

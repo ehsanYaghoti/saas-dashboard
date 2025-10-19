@@ -1,6 +1,6 @@
 import { gaugeChartData } from "@/constants/data/gaugeChartData";
 import { gaugeChartOptions } from "@/constants/options/gaugeChartOptions";
-import { textsMiddle } from "@/plugins/gaugeChartPlugins";
+import { dashedArc, textsMiddle } from "@/plugins/gaugeChartPlugins";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title , SubTitle } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
@@ -11,7 +11,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title , SubTitle);
 
 export function GaugeChart() {
   return <div className=" flex flex-col items-center w-full  " >
-    <Doughnut data={gaugeChartData} options={gaugeChartOptions} plugins={[textsMiddle]}  />
+    <Doughnut data={gaugeChartData} options={gaugeChartOptions} plugins={[textsMiddle , dashedArc]}  />
     <div className=" flex items-center w-full px-6 divide-x-2 divide-[#E5E9EF] " >
         <div
             className=" flex flex-col items-start gap-1 relative w-1/2

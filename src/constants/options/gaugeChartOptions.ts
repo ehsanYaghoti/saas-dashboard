@@ -5,21 +5,10 @@ export const gaugeChartOptions: DoughnutProps["options"] = {
   responsive: true,
   maintainAspectRatio: true,
   aspectRatio : 1,
-  circumference: 195,
-  rotation: 263,
+  circumference: 200,
+  rotation: 260,
   layout: {
-    padding : {
-        // left : 20,
-        // right : 20,
-        // top : 0
-
-    }
-    // padding: {
-    //   top: 40,
-    //   bottom: 40,
-    //   left: 55,
-    //   right: 55,
-    // },
+    padding : 0
   },
   cutout: "85%",
   radius : "80%",
