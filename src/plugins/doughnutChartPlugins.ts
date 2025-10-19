@@ -3,7 +3,11 @@ import img1 from "@/assets/charts/tokopedia.svg";
 import img2 from "@/assets/charts/alibaba.svg";
 import img3 from "@/assets/charts/amazon.svg";
 
-const images = [img1, img2, img3];
+let images : HTMLImageElement[] = [img1, img2, img3].map((image) => {
+  const img = new Image();
+  img.src = image;
+  return img
+});
 
 export const lineLabelsPlugin: DoughnutProps["plugin"] = {
   id: "lineLabelsPlugin",
@@ -33,10 +37,10 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
         const angle = 45 * (Math.PI / 180); // 45 degrees in radians
 
         ctx.save();
-        ctx.translate(x , y );
+        ctx.translate(x, y);
         ctx.rotate(angle);
         ctx.fillStyle = lineColor;
-        ctx.fillRect(0 - 2 , 0 - 2 , 4, 4);
+        ctx.fillRect(0 - 2, 0 - 2, 4, 4);
         ctx.restore();
 
         // label and data positions
@@ -63,9 +67,20 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
           x >= halfWidth
             ? xLine + xStraightLine
             : xLine + xStraightLine - imageWidth;
-        const img = new Image();
-        img.src = images[index];
-        ctx.drawImage(img, imageXPosition, yLine - 15, imageWidth, imageWidth);
+
+        const img = images[index];
+
+        if (img.complete) {
+          ctx.drawImage(
+            img,
+            imageXPosition,
+            yLine - 15,
+            imageWidth,
+            imageWidth
+          );
+        } else {
+          img.onload = () => chart.draw();
+        }
 
         // texts
         const label = chart?.data?.labels?.[index] as string;

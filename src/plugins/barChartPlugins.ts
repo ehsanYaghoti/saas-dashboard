@@ -6,7 +6,7 @@ export const progressBar: Plugin = {
     const {
       ctx,
       data,
-      chartArea: { top, bottom, right, left, height, width },
+      chartArea: { right, left, height, width },
       scales: { y },
     } = chart;
 
@@ -59,13 +59,19 @@ export const progressBar: Plugin = {
   },
 };
 
-const images : string[] = [
+const sources : string[] = [
     "https://hatscripts.github.io/circle-flags/flags/au.svg",
     "https://hatscripts.github.io/circle-flags/flags/id.svg",
     "https://hatscripts.github.io/circle-flags/flags/th.svg",
     "https://hatscripts.github.io/circle-flags/flags/de.svg",
 ]
 
+let images : HTMLImageElement[] = sources.map((image) => {
+  let img = new Image();
+  img.src = image;
+    // img = image.key;
+  return img
+});
 
 export const imageLabels: Plugin = {
   id: "imageLabels",
@@ -73,7 +79,7 @@ export const imageLabels: Plugin = {
     const {
       ctx,
       data,
-      scales: { x, y },
+      scales: { y },
     } = chart;
 
     ctx.save();
@@ -81,10 +87,11 @@ export const imageLabels: Plugin = {
     data.datasets[0].data.forEach((_, index) => {
     //   const leftPadding : number = +chart.options.layout?.padding?.left | 30;
     //   console.log(chart.options.layout?.padding);
-      const flag = new Image();
-      flag.src = images[index];
+    //   const flag = new Image();
+    //   flag.src = images[index];
+
       ctx.drawImage(
-        flag,
+        images[index],
         0,
         y.getPixelForValue(index) - 25,
         30,

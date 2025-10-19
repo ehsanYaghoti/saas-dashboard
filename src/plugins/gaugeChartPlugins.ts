@@ -1,6 +1,9 @@
 import type { DoughnutProps } from "@/types/chart";
 import UsersImg from "@/assets/charts/users.svg";
 
+const img = new Image();
+img.src = UsersImg;
+
 export const textsMiddle: DoughnutProps["plugin"] = {
   id: "labelsMiddle",
   beforeDatasetDraw(chart) {
@@ -17,10 +20,12 @@ export const textsMiddle: DoughnutProps["plugin"] = {
     ctx.save();
 
     // img
-    const img = new Image();
-    img.src = UsersImg;
-    console.log(img.width, img.height);
-    ctx.drawImage(img, width / 2 - 30, bottom - 185, 60, 60);
+
+    if (img.complete) {
+      ctx.drawImage(img, width / 2 - 30, bottom - 185, 60, 60);
+    } else {
+      img.onload = () => chart.draw();
+    }
 
     // img.onload = () => {
     //     ctx.drawImage(img , width / 2 - 30 , bottom - 185 , 60 , 60);
