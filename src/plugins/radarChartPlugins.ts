@@ -1,3 +1,4 @@
+import { degreeToRadian } from "@/utils/charts";
 import type { Chart, RadialLinearScale } from "chart.js";
 
 export const radarTickLabels = {
@@ -18,10 +19,6 @@ export const radarTickLabels = {
     const yCenter = rSclae.yCenter;
     const drawingArea = rSclae.drawingArea as number;
     const angle = 360 / data.datasets[0]?.data?.length;
-
-    function degreeToRadian(degrees: number) {
-      return degrees * (Math.PI / 180);
-    }
 
     // console.log(xCenter, yCenter, drawingArea, angle);
 
