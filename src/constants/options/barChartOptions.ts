@@ -5,6 +5,7 @@ export const barChartOptions: BarProps["options"] = {
   responsive: true,
   aspectRatio: 1,
   maintainAspectRatio: true,
+  layout : {padding : 24},
   animation: {
     duration: 5000, // ms
   },

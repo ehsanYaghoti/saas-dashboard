@@ -7,14 +7,14 @@ export const doughnutChartOptions: DoughnutProps["options"] = {
   maintainAspectRatio : true,
   layout : {
     padding : {
-        top : 40,
+        top : 10,
         bottom : 40,
         left : 55,
         right : 55
     },
-
   },
   cutout : "65%",
+  radius : "99%",
   plugins: {
     legend: {
       position: "top" as const,
@@ -25,7 +25,7 @@ export const doughnutChartOptions: DoughnutProps["options"] = {
       fullSize: true,
       text: "Sales by e-commerce platform",
       padding: {
-        bottom: 20,
+        bottom: 10,
       },
       ...titleTypography,
     },

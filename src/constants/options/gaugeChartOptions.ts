@@ -8,7 +8,7 @@ export const gaugeChartOptions: DoughnutProps["options"] = {
   circumference: 200,
   rotation: 260,
   layout: {
-    padding : 0
+    padding : 24
   },
   cutout: "85%",
   radius : "80%",

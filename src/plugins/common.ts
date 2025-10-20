@@ -9,7 +9,7 @@ export const chartAreaPadding: Plugin = {
       height: chart.height,
       top: chartArea.top + 20,
       bottom: chartArea.bottom - 20,
-      left: chartArea.left + 20,
+      left: chartArea.left + 50,
       right: chartArea.right - 20,
     };
     console.log(chartArea)

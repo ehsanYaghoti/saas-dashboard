@@ -7,8 +7,6 @@ import Header from "@/components/common/header/header";
 import KpiCard from "./components/common/cards/kpi";
 import { ChartLine } from "./components/common/charts/lineChart";
 import { HorizontalBarChart } from "./components/common/charts/horizontalBarChart";
-import { Button } from "./components/ui/button";
-import { Ellipsis } from "lucide-react";
 import RadarChart from "./components/common/charts/radarChart";
 import { DoughnutChart } from "./components/common/charts/doughnutChart";
 import { GaugeChart } from "./components/common/charts/gaugeChart";
@@ -46,60 +44,13 @@ function App() {
                 description={{ num: 0.0, explain: "Compared to last month" }}
               />
             </div>
-            <div className="w-full flex gap-8">
+            {/* <VerticalBarChart /> */}
+            <div className="w-full grid grid-cols-3 gap-8">
               <ChartLine />
-              <div className="flex flex-col items-center w-[calc(33.333333%)] bg-white p-6 rounded-lg border border-slate-200 shadow-md relative">
-                <HorizontalBarChart />
-                <div className=" flex items-center gap-1 text-slate-500 absolute right-6 top-6 ">
-                  <Button
-                    className="cursor-pointer "
-                    variant="ghost"
-                    size="icon"
-                  >
-                    <Ellipsis />
-                  </Button>
-                </div>
-              </div>
-            </div>
-            <div className="w-full h-auto flex  gap-8">
-              <div className=" flex justify-between w-2/3">
-                <div className="flex flex-col items-center w-[calc(50%)] min-h-72 bg-white p-6 rounded-lg border border-slate-200 shadow-md relative">
-                  <RadarChart />
-                  <div className=" flex items-center gap-1 text-slate-500 absolute right-6 top-6 ">
-                    <Button
-                      className="cursor-pointer "
-                      variant="ghost"
-                      size="icon"
-                    >
-                      <Ellipsis />
-                    </Button>
-                  </div>
-                </div>
-                <div className="flex flex-col items-center w-[calc(50%-32px)] min-h-72 bg-white px-6 py-6 rounded-lg border border-slate-200 shadow-md relative">
-                  <DoughnutChart />
-                  <div className=" flex items-center gap-1 text-slate-500 absolute right-6 top-6 ">
-                    <Button
-                      className="cursor-pointer "
-                      variant="ghost"
-                      size="icon"
-                    >
-                      <Ellipsis />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col items-center w-[calc(33.333333%-32px)] min-h-72 bg-white p-6 rounded-lg border border-slate-200 shadow-md relative">
-                <GaugeChart />
-                <div className=" flex items-center gap-1 text-slate-500 absolute right-6 top-6 ">
-                  <Button
-                    className="cursor-pointer "
-                    variant="ghost"
-                    size="icon"
-                  >
-                    <Ellipsis />
-                  </Button>
-                </div>
-              </div>
+              <HorizontalBarChart />
+              <RadarChart />
+              <DoughnutChart />
+              <GaugeChart />
             </div>
           </main>
         </div>

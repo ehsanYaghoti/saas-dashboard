@@ -92,7 +92,7 @@ export const imageLabels: Plugin = {
 
       ctx.drawImage(
         images[index],
-        0,
+        24,
         y.getPixelForValue(index) - 25,
         30,
         30

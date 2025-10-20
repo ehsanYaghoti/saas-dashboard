@@ -8,6 +8,7 @@ export const radarChartOptions: RadarProps["options"] = {
     // mode: "index",
     intersect: false,
   },
+  layout : {padding : 24},
   // clip: {left: 5, top: 100, right: -2, bottom: 0},
   scales: {
     r: {

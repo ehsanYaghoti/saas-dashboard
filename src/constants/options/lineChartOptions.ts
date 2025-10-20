@@ -1,9 +1,12 @@
 import type { LineProps } from "@/types/chart";
-import { commonChartOptions, titleTypography } from "../charts";
-// import type { LineOptions, PluginOptionsByType } from "chart.js";
+import { titleTypography } from "../charts";
 
-export const lineChartOptions: LineProps["options"] = {
-  ...commonChartOptions,
+export const lineChartOptions : LineProps['options'] = {
+  responsive: true,
+  maintainAspectRatio: true,
+  layout : {
+    padding : 24
+  },
   interaction: {
     mode: "index",
     intersect: false,
@@ -49,12 +52,14 @@ export const lineChartOptions: LineProps["options"] = {
         // tickBorderDash: [2, 1],
         display: true,
       },
+
     },
     x: {
       //   offset: true,
       //   offsetAfterAutoskip  : true,
       min: "2023-04-01",
       suggestedMin: "2023-03-01",
+      suggestedMax: "2023-12-30",
       type: "time",
       time: {
         unit: "month", // 👈 Show ticks per month
@@ -84,12 +89,6 @@ export const lineChartOptions: LineProps["options"] = {
     },
   },
   plugins: {
-    annotation: {
-      common: {
-        drawTime: "beforeDraw",
-      },
-      annotations: {},
-    },
     htmlLegend: {
       // ID of the container to put the legend in
       containerID: "legend-container",

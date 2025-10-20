@@ -61,7 +61,7 @@ export const textsMiddle: DoughnutProps["plugin"] = {
     // img
 
     if (img.complete) {
-      ctx.drawImage(img, width / 2 - 30, bottom - 185, 60, 60);
+      ctx.drawImage(img, width / 2 - 10 , bottom - 185, 60, 60);
     } else {
       img.onload = () => chart.draw();
     }
@@ -77,12 +77,12 @@ export const textsMiddle: DoughnutProps["plugin"] = {
     ctx.fillStyle = "rgba(0,0,0,0.7)";
     ctx.fillText(
       `${sum}`.replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      width / 2,
+      (width / 2) + 25,
       bottom - 100
     );
 
     ctx.font = "14px Inter";
     ctx.fillStyle = "rgba(0,0,0,0.4)";
-    ctx.fillText("Total Users", width / 2, bottom - 70);
+    ctx.fillText("Total Users", (width / 2) + 25, bottom - 70);
   },
 };
