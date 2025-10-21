@@ -44,7 +44,6 @@ function App() {
                 description={{ num: 0.0, explain: "Compared to last month" }}
               />
             </div>
-            {/* <VerticalBarChart /> */}
             <div className="w-full grid grid-cols-3 gap-8">
               <ChartLine />
               <HorizontalBarChart />
