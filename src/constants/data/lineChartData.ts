@@ -54,7 +54,8 @@ export const lineChartData: LineProps["data"] = {
       backgroundColor: "#287F71",
       tension : 0.4,
       borderJoinStyle : "bevel",
-      borderCapStyle : "butt"
+      borderCapStyle : "butt",
+      hoverBorderCapStyle : "round"
     },
     {
       label: "Target",

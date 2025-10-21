@@ -17,7 +17,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title, SubTitle);
 
 export function GaugeChart() {
   return (
-    <div className="flex flex-col items-center w-auto min-h-72 bg-white rounded-lg border border-slate-200 shadow-md relative">
+    <div className="flex flex-col items-center [grid-area:e] w-auto min-h-72 bg-white rounded-lg border border-slate-200 shadow-md relative">
       <Doughnut
         data={gaugeChartData}
         options={gaugeChartOptions}

@@ -27,7 +27,7 @@ ChartJS.register(
 
 export function HorizontalBarChart() {
   return (
-    <div className="flex flex-col items-start bg-white rounded-lg border border-slate-200 shadow-md relative">
+    <div className="flex flex-col items-start [grid-area:b] bg-white rounded-lg border border-slate-200 shadow-md relative">
       <Bar
       id="myChart"
         options={barChartOptions}

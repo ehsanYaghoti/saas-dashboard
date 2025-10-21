@@ -35,11 +35,10 @@ ChartJS.register(
 export function ChartLine() {
 
   return (
-
-    <div className="flex flex-col col-span-2 bg-white rounded-lg border border-slate-200 shadow-md relative ">
-      <h3 className="text-lg font-semibold text-slate-700 mb-2 px-6 pt-6 pb-0">
-        Revenue Over Time
-      </h3>
+    <div className="flex flex-col [grid-area:a] bg-white rounded-lg border  border-slate-200 shadow-md relative ">
+        <h3 className="text-lg font-semibold text-slate-700 mb-2 px-6 pt-6 pb-0">
+            Revenue Over Time
+        </h3>
       <div id="legend-container" className="px-6"></div>
       <Line
         options={lineChartOptions}

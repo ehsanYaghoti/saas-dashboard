@@ -26,7 +26,7 @@ import { Ellipsis } from "lucide-react";
 
 export default function RadarChart() {
   return (
-    <div className="flex flex-col items-center w-auto min-h-72 bg-white rounded-lg border border-slate-200 shadow-md relative">
+    <div className="flex flex-col items-center [grid-area:c] w-auto min-h-72 bg-white rounded-lg border border-slate-200 shadow-md relative">
       <Radar
         data={radarChartData}
         updateMode="resize"

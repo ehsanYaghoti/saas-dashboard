@@ -44,7 +44,7 @@ function App() {
                 description={{ num: 0.0, explain: "Compared to last month" }}
               />
             </div>
-            <div className="w-full grid grid-cols-3 gap-8">
+            <div className="w-full grid grid-cols-3 [grid-template-areas:'a_a_b'_'c_d_e'] gap-8">
               <ChartLine />
               <HorizontalBarChart />
               <RadarChart />

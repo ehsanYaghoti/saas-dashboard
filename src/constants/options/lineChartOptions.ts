@@ -3,7 +3,11 @@ import { titleTypography } from "../charts";
 
 export const lineChartOptions : LineProps['options'] = {
   responsive: true,
+  aspectRatio: 3,
   maintainAspectRatio: true,
+  animation : {
+    duration : 3000
+  },
   layout : {
     padding : 24
   },
@@ -11,7 +15,6 @@ export const lineChartOptions : LineProps['options'] = {
     mode: "index",
     intersect: false,
   },
-  aspectRatio: 3,
   elements: {
     point: {
       pointStyle: "circle",
@@ -19,12 +22,13 @@ export const lineChartOptions : LineProps['options'] = {
       borderWidth: 0,
       radius: 2,
       hoverBorderWidth: 2,
+      hitRadius : 50,
       hoverRadius: 6,
     },
   },
   scales: {
     y: {
-      position: "right",
+      position: "left",
       max: 20000,
       min: 0,
       ticks: {
@@ -103,9 +107,9 @@ export const lineChartOptions : LineProps['options'] = {
         boxWidth: 7,
         padding: 10,
         pointStyle: "rectRot",
-        usePointStyle: true,
+        usePointStyle: false,
         borderRadius: 4,
-        useBorderRadius: true,
+        useBorderRadius: false,
         textAlign: "left",
         color: "rgba(0,0,0,0.7)",
         font: { size: 14 },
@@ -125,7 +129,7 @@ export const lineChartOptions : LineProps['options'] = {
           return `${context.dataset.label}:  $${context.formattedValue}`;
         },
       },
-      usePointStyle: true,
+      usePointStyle: false,
       backgroundColor: "#111729",
       titleColor: "#ffffff",
       bodyColor: "#ffffff",
