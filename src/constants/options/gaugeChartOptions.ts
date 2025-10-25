@@ -7,6 +7,10 @@ export const gaugeChartOptions: DoughnutProps["options"] = {
   aspectRatio : 1,
   circumference: 200,
   rotation: 260,
+  animation : {
+    duration : 2000,
+    easing : "easeOutQuad"
+  },
   layout: {
     padding : 24
   },

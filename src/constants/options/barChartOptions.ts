@@ -7,8 +7,8 @@ export const barChartOptions: BarProps["options"] = {
   maintainAspectRatio: true,
   layout : {padding : 24},
   animation: {
-    duration: 3000,
-    easing : "easeOutQuad"
+    duration: 2000,
+    easing : "easeOutQuad",
   },
   indexAxis: "y" as const,
   elements: {

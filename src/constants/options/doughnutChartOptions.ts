@@ -5,6 +5,10 @@ import { titleTypography } from "../charts";
 export const doughnutChartOptions: DoughnutProps["options"] = {
   responsive : true,
   maintainAspectRatio : true,
+  animation : {
+    duration : 2000,
+    easing : "easeOutQuad"
+  },
   layout : {
     padding : {
         top : 10,

@@ -1,15 +1,46 @@
 import type { LineProps } from "@/types/chart";
 import { titleTypography } from "../charts";
 
-export const lineChartOptions : LineProps['options'] = {
+export const lineChartOptions: LineProps["options"] = {
   responsive: true,
   aspectRatio: 3,
   maintainAspectRatio: true,
-  animation : {
-    duration : 3000
+  animation: {
+    duration: 2000,
+    easing: "easeOutQuad",
   },
-  layout : {
-    padding : 24
+  animations: {
+    x: {
+      from: 0,
+    },
+    // y: {
+    //   from: 0,
+    // },
+  },
+  transitions: {
+    show: {
+      animations: {
+        x: {
+          from: 0,
+        },
+        y: {
+          from: 0,
+        },
+      },
+    },
+    hide: {
+      animations: {
+        x: {
+          to: 0,
+        },
+        y: {
+          to: 0,
+        },
+      },
+    },
+  },
+  layout: {
+    padding: 24,
   },
   interaction: {
     mode: "index",
@@ -22,7 +53,7 @@ export const lineChartOptions : LineProps['options'] = {
       borderWidth: 0,
       radius: 2,
       hoverBorderWidth: 2,
-      hitRadius : 50,
+      hitRadius: 50,
       hoverRadius: 6,
     },
   },
@@ -56,7 +87,6 @@ export const lineChartOptions : LineProps['options'] = {
         // tickBorderDash: [2, 1],
         display: true,
       },
-
     },
     x: {
       //   offset: true,
