@@ -22,11 +22,11 @@ export function ratingSectionGenerator(rate : number) : React.ReactNode {
     const elements : React.ReactNode[] = [];
 
     for(let i = 1; i <= rate; i++){
-       elements.push(React.createElement("span" , {className : `w-[20px] h-2 rounded-full ${statusTokens(rate).color}`}))
+       elements.push(React.createElement("span" , {key : i , className : `w-[20px] h-2 rounded-full ${statusTokens(rate).color}`}))
     }
 
     for(let i = 1; i <= 5 - rate; i++){
-       elements.push(React.createElement("span" , {className : 'w-[20px] h-2 rounded-full bg-[#E1E7EE]'}))
+       elements.push(React.createElement("span" , {key : i + rate , className : 'w-[20px] h-2 rounded-full bg-[#E1E7EE]'}))
     }
 
     return elements

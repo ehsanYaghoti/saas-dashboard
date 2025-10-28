@@ -26,9 +26,11 @@ const buttonsList: buttonsListType = [
 export default function HeaderDynamic({
   title,
   buttons,
+  productsCount
 }: {
   title: string;
   buttons?: string[];
+  productsCount ?: number;
 }) {
   return (
     <div className=" w-full px-6 py-3 flex items-center justify-between   ">
@@ -36,7 +38,7 @@ export default function HeaderDynamic({
         {title}
         {title === "Products" && (
           <span className="text-xs px-2 py-[2px] rounded-full bg-[#E5F0EF] text-primary-1 text-shadow-lg text-shadow-white ">
-            10,932
+            {productsCount?.toLocaleString()}
           </span>
         )}
       </h2>
@@ -46,8 +48,9 @@ export default function HeaderDynamic({
           .filter((item) => {
             return buttons?.includes(item.title);
           })
-          .map((button) => (
+          .map((button , index) => (
             <Button
+              key={index}
               variant="outline"
               className={`${button.style} cursor-pointer`}
             >
