@@ -1,29 +1,33 @@
-import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import type { Products } from "@/types";
 import { ratingSectionGenerator, statusTokens } from "@/utils/style";
 import { type ColumnDef } from "@tanstack/react-table";
-import { ArrowDownWideNarrow } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
+import img from "@/assets/products/product.jpg";
+import SortBtnHeader from "../table/sortBtnHeader";
 
 export const columns: ColumnDef<Products>[] = [
   {
     id: "select",
     header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
+      <div className="text-center pl-2" >
+        <Checkbox
+          checked={
+            table.getIsAllPageRowsSelected() ||
+            (table.getIsSomePageRowsSelected() && "indeterminate")
+          }
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label="Select all"
+          className="data-[state=checked]:bg-primary-1 data-[state=checked]:border-primary-1 "
+        />
+      </div>
     ),
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         aria-label="Select row"
+        className="data-[state=checked]:bg-primary-1 data-[state=checked]:border-primary-1"
       />
     ),
     enableSorting: false,
@@ -32,26 +36,34 @@ export const columns: ColumnDef<Products>[] = [
   {
     accessorKey: "rank",
     header: "Rank",
-    // cell : ({row}) => {
-    //     return (<div className="w-1 flex items-center justify-center" >{row.getValue('rank')}</div>)
-    // }
+    cell: ({ row }) => {
+      return (
+        <div className="text-center text-slate-700 font-bold">
+          {row.getValue("rank")}
+        </div>
+      );
+    },
   },
   {
     accessorKey: "title",
-    header: "Product",
+    header: ({ column }) => {
+      return <SortBtnHeader title="Product" column={column} />;
+    },
     cell: ({ row }) => {
       return (
-        <div className="flex items-center gap-2 w-[75px]">
+        <div className="flex items-center gap-2 min-w-[75px] px-2">
           <img
-            src={undefined}
+            src={img}
             alt="productImage"
             width={50}
             height={50}
             className="border rounded-sm"
           />
-          <div className=" flex flex-col items-start gap-1 ">
-            <span className="">{row.getValue("title")}</span>
-            <p className="">IDS: #{row.original.id}</p>
+          <div className=" flex flex-col items-start gap-1  ">
+            <span className="font-[600] text-slate-700">
+              {row.getValue("title")}
+            </span>
+            <p className="text-slate-400 font-[500]">IDS: #{row.original.id}</p>
           </div>
         </div>
       );
@@ -59,10 +71,12 @@ export const columns: ColumnDef<Products>[] = [
   },
   {
     accessorKey: "totalBuyers",
-    header: "Total Buyers",
+    header: ({ column }) => {
+      return <SortBtnHeader title="Total Buyers" column={column} />;
+    },
     cell: ({ row }) => {
       return (
-        <div className=" text-center font-bold ">
+        <div className=" text-center font-bold text-slate-700 w-fit px-2 ">
           {Number(row.getValue("totalBuyers")).toLocaleString()}
         </div>
       );
@@ -71,15 +85,7 @@ export const columns: ColumnDef<Products>[] = [
   {
     accessorKey: "price",
     header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          <ArrowDownWideNarrow className="ml-2 h-4 w-4 " />
-          Price
-        </Button>
-      );
+      return <SortBtnHeader title="Price" column={column} />;
     },
     cell: ({ row }) => {
       const price = parseFloat(row.getValue("price"));
@@ -88,26 +94,36 @@ export const columns: ColumnDef<Products>[] = [
         currency: "USD",
       }).format(price);
 
-      return <div className=" text-center font-bold ">{formatted}</div>;
+      return (
+        <div className=" text-center font-bold text-slate-700 w-fit px-2">
+          {formatted}
+        </div>
+      );
     },
   },
   {
     accessorKey: "stock",
-    header: "Stock",
+    header: ({ column }) => {
+      return <SortBtnHeader title="Stock" column={column} />;
+    },
     cell: ({ row }) => {
       return (
-        <div className=" text-center font-bold ">{row.getValue("stock")}</div>
+        <div className=" text-center font-bold text-slate-700 w-fit px-2">
+          {row.getValue("stock")}
+        </div>
       );
     },
   },
   {
     accessorKey: "rating",
-    header: "Rating",
+    header: ({ column }) => {
+      return <SortBtnHeader title="Rating" column={column} />;
+    },
     cell: ({ row }) => {
       const rate = row.getValue("rating") as number;
 
       return (
-        <div className=" flex flex-col items-start gap-2 w-[50px]">
+        <div className=" flex flex-col items-start gap-2 min-w-[50px] w-fit px-2">
           <p className="font-bold text-slate-400 w-fit text-xs ">
             Status :{" "}
             <span className="font-extrabold text-slate-600">
@@ -123,16 +139,16 @@ export const columns: ColumnDef<Products>[] = [
   },
   {
     accessorKey: "status",
-    header: "status",
+    header: () => (<div className="text-left w-full pl-1 " >Status</div>),
     cell: ({ row }) => {
       const product = row.original;
       return (
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-start gap-2">
           <Switch
             className="data-[state=checked]:bg-primary-1"
-            checked={product.status}
+            defaultChecked={product.status}
           />
-          <span>Active</span>
+          <span className=" font-semibold text-slate-400" >Active</span>
         </div>
       );
     },

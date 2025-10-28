@@ -41,7 +41,7 @@ export default function Table() {
       totalBuyers : 12990,
       price : 1234.82,
       stock : 231,
-      rating : 5,
+      rating : 2,
       status : false
     },
     {
@@ -71,7 +71,7 @@ export default function Table() {
       totalBuyers : 12990,
       price : 1238.82,
       stock : 231,
-      rating : 5,
+      rating : 4,
       status : false
     },
     {

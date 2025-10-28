@@ -21,16 +21,11 @@ import {
 } from "@/components/ui/table";
 
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 import { useState } from "react";
 import { Search } from "lucide-react";
+import { DataTablePagination } from "../table/pagination";
+import { DataTableViewOptions } from "../table/columnToggle";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -66,31 +61,36 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="flex flex-col" >
-        <div className="flex items-center gap-2 bg-[#F5F7F9] rounded-t-md  border border-b-0 p-4" >
-            <span className=" w-6 h-6 rounded-full bg-[#3CBEA9] border-[rgba(0,0,0,0.75)] border-1 shadow-[2px_0px_0px_0px_rgba(0,0,0,0.75)] " ></span>
-            <p className="text-base text-slate-500 font-base ">
-                This dataTable show all of your product
-            </p>
-        </div>
-      <div className=" bg-white flex items-center justify-between border px-4 pt-4 ">
-        <div className="flex items-center gap-2 ">
-            <span className="border-b-2 border-b-primary-1" >All products</span>
-            <span className="border-b-2 border-b-primary-1" >Live</span>
-            <span className="border-b-2 border-b-primary-1" >Archive</span>
-            <span className="border-b-2 border-b-primary-1" >Out of Stock</span>
-            <span className="border-b-2 border-b-primary-1" >Low Stock</span>
+    <div className="flex flex-col">
+      <div className="flex items-center gap-2 bg-[#F5F7F9] rounded-t-md  border border-b-0 p-4">
+        <span className=" w-6 h-6 rounded-full bg-[#3CBEA9] border-[rgba(0,0,0,0.75)] border-1 shadow-[2px_0px_0px_0px_rgba(0,0,0,0.75)] "></span>
+        <p className="text-base text-slate-500 font-base ">
+          This dataTable show all of your product
+        </p>
+      </div>
+      <div className=" bg-white flex items-center justify-between border px-4  overflow-visible h-16 z-10 ">
+        <div
+          className="h-full flex  items-center gap-6
+            font-[600] text-base text-slate-400
+        "
+        >
+          <span
+            className="relative font-bold text-primary-1
+            after:h-[3px]  after:content-[''] after:w-[110%] after:absolute after:bg-primary-1
+            after:rounded-full after:-bottom-[18px] after:-left-[2px]
+            "
+          >
+            All products
+          </span>
+          <span className="relative">Live</span>
+          <span className="relative">Archive</span>
+          <span className="relative">Out of Stock</span>
+          <span className="relative">Low Stock</span>
         </div>
 
-        <div className="flex items-center gap-3 pb-4">
-          <div className="  text-sm">
-            {table.getFilteredSelectedRowModel().rows.length !== 0
-              ? `${table.getFilteredSelectedRowModel().rows.length} of ${
-                  table.getFilteredRowModel().rows.length
-                }  row(s) selected.`
-              : ""}
-          </div>
-          <DropdownMenu>
+        <div className="flex items-center justify-center ">
+            <DataTableViewOptions table={table} />
+          {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="mx-3">
                 Columns
@@ -115,9 +115,8 @@ export function DataTable<TData, TValue>({
                   );
                 })}
             </DropdownMenuContent>
-          </DropdownMenu>
+          </DropdownMenu> */}
         </div>
-
       </div>
 
       <div className="flex items-center p-4 border-x bg-white relative">
@@ -129,17 +128,17 @@ export function DataTable<TData, TValue>({
           }
           name="search"
           className="max-w-full bg-white h-12 pl-8 "
-         />
-        <Search className=" absolute left-7 text-slate-400"  size={15} />
+        />
+        <Search className=" absolute left-7 text-slate-400" size={15} />
       </div>
-      <div className="overflow-hidden rounded-b-md ">
-        <Table className="">
-          <TableHeader>
+      <div className="overflow-hidden ">
+        <Table >
+          <TableHeader className=""  >
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow key={headerGroup.id} className="" >
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className=" text-center">
+                    <TableHead key={header.id} className=" text-slate-500 font-semibold text-center !border-r-0 ">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -183,24 +182,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
-      </div>
+      <DataTablePagination table={table} />
     </div>
   );
 }
