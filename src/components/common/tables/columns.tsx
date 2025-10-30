@@ -4,13 +4,13 @@ import { ratingSectionGenerator, statusTokens } from "@/utils/style";
 import { type ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import img from "@/assets/products/product.jpg";
-import SortBtnHeader from "../table/sortBtnHeader";
+import SortBtnHeader from "./sortBtnHeader";
 
 export const columns: ColumnDef<Products>[] = [
   {
     id: "select",
     header: ({ table }) => (
-      <div className="text-center pl-2" >
+      <div className="text-center pl-2">
         <Checkbox
           checked={
             table.getIsAllPageRowsSelected() ||
@@ -139,7 +139,10 @@ export const columns: ColumnDef<Products>[] = [
   },
   {
     accessorKey: "status",
-    header: () => (<div className="text-left w-full pl-1 " >Status</div>),
+    header: () => <div className="text-left w-full pl-1 ">Status</div>,
+    meta: {
+      filterVariant: "select",
+    },
     cell: ({ row }) => {
       const product = row.original;
       return (
@@ -148,7 +151,7 @@ export const columns: ColumnDef<Products>[] = [
             className="data-[state=checked]:bg-primary-1"
             defaultChecked={product.status}
           />
-          <span className=" font-semibold text-slate-400" >Active</span>
+          <span className=" font-semibold text-slate-400">Active</span>
         </div>
       );
     },

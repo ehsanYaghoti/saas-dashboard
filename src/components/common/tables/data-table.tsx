@@ -7,8 +7,12 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
+  getFacetedMinMaxValues,
   type SortingState,
   useReactTable,
+//   type Updater,
 } from "@tanstack/react-table";
 
 import {
@@ -24,8 +28,9 @@ import { Input } from "@/components/ui/input";
 
 import { useState } from "react";
 import { Search } from "lucide-react";
-import { DataTablePagination } from "../table/pagination";
-import { DataTableViewOptions } from "../table/columnToggle";
+import { DataTablePagination } from "./pagination";
+import { DataTableViewOptions } from "./columnToggle";
+import DataTableFacetedFilter from "./data-table-faceted-filter";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -45,6 +50,9 @@ export function DataTable<TData, TValue>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
+    getFacetedMinMaxValues : getFacetedMinMaxValues(),
     getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
@@ -60,6 +68,8 @@ export function DataTable<TData, TValue>({
     },
   });
 
+
+
   return (
     <div className="flex flex-col">
       <div className="flex items-center gap-2 bg-[#F5F7F9] rounded-t-md  border border-b-0 p-4">
@@ -69,27 +79,9 @@ export function DataTable<TData, TValue>({
         </p>
       </div>
       <div className=" bg-white flex items-center justify-between border px-4  overflow-visible h-16 z-10 ">
-        <div
-          className="h-full flex  items-center gap-6
-            font-[600] text-base text-slate-400
-        "
-        >
-          <span
-            className="relative font-bold text-primary-1
-            after:h-[3px]  after:content-[''] after:w-[110%] after:absolute after:bg-primary-1
-            after:rounded-full after:-bottom-[18px] after:-left-[2px]
-            "
-          >
-            All products
-          </span>
-          <span className="relative">Live</span>
-          <span className="relative">Archive</span>
-          <span className="relative">Out of Stock</span>
-          <span className="relative">Low Stock</span>
-        </div>
-
+        <DataTableFacetedFilter table={table} />
         <div className="flex items-center justify-center ">
-            <DataTableViewOptions table={table} />
+          <DataTableViewOptions table={table} />
           {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="mx-3">
@@ -132,13 +124,16 @@ export function DataTable<TData, TValue>({
         <Search className=" absolute left-7 text-slate-400" size={15} />
       </div>
       <div className="overflow-hidden ">
-        <Table >
-          <TableHeader className=""  >
+        <Table>
+          <TableHeader className="">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className="" >
+              <TableRow key={headerGroup.id} className="">
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className=" text-slate-500 font-semibold text-center !border-r-0 ">
+                    <TableHead
+                      key={header.id}
+                      className=" text-slate-500 font-semibold text-center !border-r-0 "
+                    >
                       {header.isPlaceholder
                         ? null
                         : flexRender(

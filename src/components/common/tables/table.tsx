@@ -82,7 +82,7 @@ export default function Table() {
       price : 1234.82,
       stock : 231,
       rating : 5,
-      status : false
+      status : true
     },
     {
       id: "728ed52h",
@@ -92,21 +92,41 @@ export default function Table() {
       price : 1231.82,
       stock : 231,
       rating : 5,
-      status : false
+      status : true
     },
     {
-      id: "728ed52h",
+      id: "728ed52c",
       rank : 10,
-      title : "Givench Sweater 3",
+      title : "Givench Sweater 9",
       totalBuyers : 12990,
-      price : 1234.82,
-      stock : 231,
-      rating : 5,
+      price : 1231.82,
+      stock : 4,
+      rating : 3,
       status : false
     },
     {
       id: "728ed52h",
       rank : 11,
+      title : "Givench Sweater 3",
+      totalBuyers : 12990,
+      price : 1234.82,
+      stock : 0,
+      rating : 5,
+      status : false
+    },
+    {
+      id: "728ed52d",
+      rank : 12,
+      title : "Givench Sweater 5",
+      totalBuyers : 12990,
+      price : 1234.82,
+      stock : 0,
+      rating : 4,
+      status : false
+    },
+    {
+      id: "728ed52h",
+      rank : 13,
       title : "Givench Sweater 3",
       totalBuyers : 12990,
       price : 1234.82,
