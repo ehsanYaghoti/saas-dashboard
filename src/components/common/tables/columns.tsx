@@ -4,7 +4,7 @@ import { ratingSectionGenerator, statusTokens } from "@/utils/style";
 import { type ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import img from "@/assets/products/product.jpg";
-import SortBtnHeader from "./sortBtnHeader";
+import SortBtnHeader from "./data-table-column-sort-btn";
 
 export const columns: ColumnDef<Products>[] = [
   {

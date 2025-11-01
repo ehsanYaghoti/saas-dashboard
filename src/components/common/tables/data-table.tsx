@@ -24,13 +24,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { Input } from "@/components/ui/input";
-
 import { useState } from "react";
-import { Search } from "lucide-react";
-import { DataTablePagination } from "./pagination";
-import { DataTableViewOptions } from "./columnToggle";
-import DataTableFacetedFilter from "./data-table-faceted-filter";
+import { DataTablePagination } from "./data-table-pagination";
+import DataTableToolbar from "./data-table-toolbar";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -78,51 +74,9 @@ export function DataTable<TData, TValue>({
           This dataTable show all of your product
         </p>
       </div>
-      <div className=" bg-white flex items-center justify-between border px-4  overflow-visible h-16 z-10 ">
-        <DataTableFacetedFilter table={table} />
-        <div className="flex items-center justify-center ">
-          <DataTableViewOptions table={table} />
-          {/* <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="mx-3">
-                Columns
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              {table
-                .getAllColumns()
-                .filter((column) => column.getCanHide())
-                .map((column) => {
-                  return (
-                    <DropdownMenuCheckboxItem
-                      key={column.id}
-                      className="capitalize"
-                      checked={column.getIsVisible()}
-                      onCheckedChange={(value) =>
-                        column.toggleVisibility(!!value)
-                      }
-                    >
-                      {column.id}
-                    </DropdownMenuCheckboxItem>
-                  );
-                })}
-            </DropdownMenuContent>
-          </DropdownMenu> */}
-        </div>
-      </div>
 
-      <div className="flex items-center p-4 border-x bg-white relative">
-        <Input
-          placeholder="Search products..."
-          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("title")?.setFilterValue(event.target.value)
-          }
-          name="search"
-          className="max-w-full bg-white h-12 pl-8 "
-        />
-        <Search className=" absolute left-7 text-slate-400" size={15} />
-      </div>
+      <DataTableToolbar table={table} />
+
       <div className="overflow-hidden ">
         <Table>
           <TableHeader className="">

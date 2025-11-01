@@ -1,3 +1,4 @@
+import { productsTableData } from "@/constants/data/table/products";
 import type { Table } from "@tanstack/react-table";
 import { useState, type MouseEvent } from "react";
 
@@ -20,16 +21,16 @@ export default function DataTableFacetedFilter<TData>({
     setTabIndex(tab);
 
     const column = table.getColumn(columnKey);
-    console.log(column);
+    table.resetColumnFilters();
+
+    column?.setFilterValue(undefined);
     if (type === "value") {
       column?.setFilterValue(value);
     } else if (type === "range") {
-      // function updater (value : number , treshhold : number) : Updater<any> {
-      //     return value < treshhold
-      // }
-      column?.setFilterValue([0, value]);
+      column?.setFilterValue([1 , value]);
     }
   };
+
 
   return (
     <div
@@ -42,7 +43,10 @@ export default function DataTableFacetedFilter<TData>({
         className={`
             relative flex items-center gap-2
             font-bold
-            ${tabIndex === 0 && "text-primary-1 bg-white after:h-[3px]  after:content-['']"}
+            ${
+              tabIndex === 0 &&
+              "text-primary-1 bg-white after:h-[3px]  after:content-['']"
+            }
             after:w-full after:absolute after:bg-primary-1
             after:rounded-full after:-bottom-[1px] after:left-0
             hover:bg-green-50  cursor-pointer px-2 h-full
@@ -53,31 +57,40 @@ export default function DataTableFacetedFilter<TData>({
       >
         All products
         <span className="ml-auto flex size-4 items-center justify-center font-mono text-sm bg-green-100 rounded-full p-3 text-primary-1">
-          {table?.getRowCount()}
+          {productsTableData.length}
         </span>
       </button>
-      <button
-        type="button"
-        className={`
+      {table.getColumn("status") && (
+        <button
+          type="button"
+          className={`
             relative flex items-center gap-2 font-bold
-            ${tabIndex === 1 && "text-primary-1 bg-white after:h-[3px]  after:content-['']"}
+            ${
+              tabIndex === 1 &&
+              "text-primary-1 bg-white after:h-[3px]  after:content-['']"
+            }
             after:w-full after:absolute after:bg-primary-1
             after:rounded-full after:-bottom-[1px] after:left-0
             hover:bg-green-50  cursor-pointer px-2 h-full
         `}
-        onClick={(e) => filterFacetingHandler(e, "status", true, "value", 1)}
-      >
-        Live
-        <span className="ml-auto flex size-4 items-center justify-center font-mono text-sm bg-green-100 rounded-full p-3 text-primary-1">
-          {table?.getColumn("status")?.getFacetedUniqueValues().get(true)}
-        </span>
-      </button>
+          onClick={(e) => filterFacetingHandler(e, "status", true, "value", 1)}
+        >
+          Live
+          <span className="ml-auto flex size-4 items-center justify-center font-mono text-sm bg-green-100 rounded-full p-3 text-primary-1">
+            {table?.getColumn("status")?.getFacetedUniqueValues().get(true) ? table?.getColumn("status")?.getFacetedUniqueValues().get(true) : 0}
+          </span>
+        </button>
+      )}
+
       <button
         type="button"
         className={`
             relative flex items-center gap-2
             font-bold
-            ${tabIndex === 2 && "text-primary-1 bg-white after:h-[3px]  after:content-['']"}
+            ${
+              tabIndex === 2 &&
+              "text-primary-1 bg-white after:h-[3px]  after:content-['']"
+            }
             after:w-full after:absolute after:bg-primary-1
             after:rounded-full after:-bottom-[1px] after:left-0
             hover:bg-green-50  cursor-pointer px-2 h-full
@@ -86,14 +99,17 @@ export default function DataTableFacetedFilter<TData>({
       >
         Archive
         <span className="ml-auto flex size-4 items-center justify-center font-mono text-sm bg-green-100 rounded-full p-3 text-primary-1">
-          {table?.getColumn("status")?.getFacetedUniqueValues().get(false)}
+          {table?.getColumn("status")?.getFacetedUniqueValues().get(false) ? table?.getColumn("status")?.getFacetedUniqueValues().get(false) : 0}
         </span>
       </button>
       <button
         type="button"
         className={`
             relative flex items-center gap-2 font-bold
-            ${tabIndex === 3 && "text-primary-1 bg-white after:h-[3px]  after:content-['']"}
+            ${
+              tabIndex === 3 &&
+              "text-primary-1 bg-white after:h-[3px]  after:content-['']"
+            }
             after:w-full after:absolute after:bg-primary-1
             after:rounded-full after:-bottom-[1px] after:left-0
             hover:bg-green-50  cursor-pointer px-2 h-full
@@ -102,14 +118,17 @@ export default function DataTableFacetedFilter<TData>({
       >
         Out of Stock
         <span className="ml-auto flex size-4 items-center justify-center font-mono text-sm bg-green-100 rounded-full p-3 text-primary-1">
-          {table?.getColumn("stock")?.getFacetedUniqueValues().get(0)}
+          {table?.getColumn("stock")?.getFacetedUniqueValues().get(0) ? table?.getColumn("stock")?.getFacetedUniqueValues().get(0) : 0}
         </span>
       </button>
       <button
         type="button"
         className={`
             relative flex items-center gap-2 font-bold
-            ${tabIndex === 4 && "text-primary-1 bg-white after:h-[3px]  after:content-['']"}
+            ${
+              tabIndex === 4 &&
+              "text-primary-1 bg-white after:h-[3px]  after:content-['']"
+            }
             after:w-full after:absolute after:bg-primary-1
             after:rounded-full after:-bottom-[1px] after:left-0
             hover:bg-green-50  cursor-pointer px-2 h-full
@@ -118,7 +137,7 @@ export default function DataTableFacetedFilter<TData>({
       >
         Low Stock
         <span className="ml-auto flex size-4 items-center justify-center font-mono text-sm bg-green-100 rounded-full p-3 text-primary-1">
-          {table?.getColumn("stock")?.getFacetedUniqueValues().get(4)}
+          {table?.getColumn("stock")?.getFacetedUniqueValues().get(4) ? table?.getColumn("stock")?.getFacetedUniqueValues().get(4) : 0}
         </span>
       </button>
     </div>
