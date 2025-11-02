@@ -1,5 +1,6 @@
 import type { LineProps } from "@/types/chart";
 import { titleTypography } from "../charts";
+import { checkTheme } from "@/utils";
 
 export const lineChartOptions: LineProps["options"] = {
   responsive: true,
@@ -59,7 +60,7 @@ export const lineChartOptions: LineProps["options"] = {
   },
   scales: {
     y: {
-      position: "left",
+      position: "right",
       max: 20000,
       min: 0,
       ticks: {
@@ -69,7 +70,7 @@ export const lineChartOptions: LineProps["options"] = {
           }
           return "";
         },
-        color: "#B0B9C8",
+        color: checkTheme() ? "white"  : "#B0B9C8",
       },
       border: {
         // display: false,
@@ -78,7 +79,7 @@ export const lineChartOptions: LineProps["options"] = {
       grid: {
         color: (context) => {
           if (context.index % 5 === 0) {
-            return `rgba(0 , 0 , 0 , 0.1)`;
+            return checkTheme() ? "white" : `rgba(0 , 0 , 0 , 0.1)`;
           }
           return "rgba(0 , 0 , 0 , 0.0)";
         },
@@ -108,7 +109,7 @@ export const lineChartOptions: LineProps["options"] = {
           // enabled: true,
         },
         align: "start",
-        color: "rgba(0,0,0,0.5)",
+        color: checkTheme() ? "white" : "rgba(0,0,0,0.5)",
         padding: 6,
         font: { weight: 600 },
       },
@@ -117,6 +118,7 @@ export const lineChartOptions: LineProps["options"] = {
         // dash : [1 ,4]
       },
       grid: {
+        color : checkTheme() ? "rgb(255,255,255)" : "rgba(0,0,0,0.1)"
         // drawOnChartArea: true,
         // display : false
       },

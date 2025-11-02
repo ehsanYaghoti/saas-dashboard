@@ -1,3 +1,4 @@
+import { checkTheme } from "@/utils";
 import type { Chart, LegendItem, Plugin } from "chart.js";
 
 const getOrCreateLegendList = (chart: Chart, id: string) => {
@@ -30,7 +31,9 @@ export const htmlLegendPlugin: Plugin<"line"> = {
     }
 
     // Reuse the built-in legendItems generator
-    const items = chart?.options?.plugins?.legend?.labels?.generateLabels(chart) as LegendItem[];
+    const items = chart?.options?.plugins?.legend?.labels?.generateLabels(
+      chart
+    ) as LegendItem[];
 
     items?.forEach((item) => {
       const li = document.createElement("li");
@@ -41,13 +44,6 @@ export const htmlLegendPlugin: Plugin<"line"> = {
       li.style.flexDirection = "row";
 
       li.onclick = () => {
-        // const {type} = chart.config.options;
-        // if (type === 'pie' || type === 'doughnut') {
-        //   // Pie and doughnut charts only have a single dataset and visibility is per item
-        //   chart.toggleDataVisibility(item.index);
-        // } else {
-        //   chart.setDatasetVisibility(item.datasetIndex, !chart.isDatasetVisible(item.datasetIndex));
-        // }
         chart.setDatasetVisibility(
           item.datasetIndex,
           !chart.isDatasetVisible(item.datasetIndex)
@@ -69,6 +65,8 @@ export const htmlLegendPlugin: Plugin<"line"> = {
       boxSpan.style.width = "9px";
       boxSpan.style.rotate = "45deg";
 
+      const isDarkMode = checkTheme();
+
       // Label Section
       const textsSection = document.createElement("div");
       textsSection.style.display = "flex";
@@ -77,7 +75,11 @@ export const htmlLegendPlugin: Plugin<"line"> = {
 
       // Label title
       const labelTitle = document.createElement("span");
-      labelTitle.style.color = "rgba(0,0,0,0.4)";
+      if (isDarkMode) {
+        labelTitle.style.color = "white";
+      } else {
+        labelTitle.style.color = "rgba(0,0,0,0.4)";
+      }
       labelTitle.style.margin = "0";
       labelTitle.style.padding = "0";
       labelTitle.style.textDecoration = item.hidden ? "line-through" : "";
@@ -87,14 +89,22 @@ export const htmlLegendPlugin: Plugin<"line"> = {
 
       // Label paragraph
       const labelParagraph = document.createElement("p");
-      labelParagraph.style.color = "rgba(0,0,0,0.8)";
+      if (isDarkMode) {
+        labelTitle.style.color = "white";
+      } else {
+        labelParagraph.style.color = "rgba(0,0,0,0.8)";
+      }
       labelParagraph.style.display = "flex";
       labelParagraph.style.gap = "10px";
       labelParagraph.innerText = "$32,839.99";
 
       // Label paragraph percent
       const labelPercent = document.createElement("span");
-      labelPercent.style.color = "rgba(0,0,0,0.4)";
+      if (isDarkMode) {
+        labelTitle.style.color = "white";
+      } else {
+        labelTitle.style.color = "rgba(0,0,0,0.4)";
+      }
       labelPercent.innerText = " • 55%";
 
       labelParagraph.appendChild(labelPercent);
@@ -124,7 +134,11 @@ export const verticalHoverLine: Plugin = {
           ctx.save();
           ctx.beginPath();
           // ctx.isPointInPath(dataPoint.x , dataPoint.y)
-          ctx.strokeStyle = "rgba(0,0,0,0.6)";
+          if (checkTheme()) {
+            ctx.strokeStyle = "white";
+          } else {
+            ctx.strokeStyle = "rgba(0,0,0,0.6)";
+          }
           ctx.setLineDash([2, 2]);
           // console.log(dataPoint.options.border)
           ctx.moveTo(dataPoint.x, top);
