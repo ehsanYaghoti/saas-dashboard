@@ -156,8 +156,13 @@ button:focus-visible {
     --color-primary-2: #EB862A;
     --color-primary-3: #ABBDD3;
     --color-primary-4: #114034;
+    --color-primary-5: #FAFBFC;
     --color-netural-1: #97A3B6;
     --color-netural-2: #111729;
+    --color-dark-1: #181C14;
+    --color-dark-2: #3C3D37;
+    --color-dark-3: #697565;
+    --color-dark-text: #F4F4F4;
     --color-primary-foreground: var(--primary-foreground);
     --color-secondary: var(--secondary);
     --color-secondary-foreground: var(--secondary-foreground);

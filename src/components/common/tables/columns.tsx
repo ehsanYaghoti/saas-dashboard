@@ -38,7 +38,7 @@ export const columns: ColumnDef<Products>[] = [
     header: "Rank",
     cell: ({ row }) => {
       return (
-        <div className="text-center text-slate-700 font-bold">
+        <div className="text-center font-bold">
           {row.getValue("rank")}
         </div>
       );
@@ -60,7 +60,7 @@ export const columns: ColumnDef<Products>[] = [
             className="border rounded-sm"
           />
           <div className=" flex flex-col items-start gap-1  ">
-            <span className="font-[600] text-slate-700">
+            <span className="font-[600] ">
               {row.getValue("title")}
             </span>
             <p className="text-slate-400 font-[500]">IDS: #{row.original.id}</p>
@@ -76,7 +76,7 @@ export const columns: ColumnDef<Products>[] = [
     },
     cell: ({ row }) => {
       return (
-        <div className=" text-center font-bold text-slate-700 w-fit px-2 ">
+        <div className=" text-center font-bold w-fit px-2 ">
           {Number(row.getValue("totalBuyers")).toLocaleString()}
         </div>
       );
@@ -95,7 +95,7 @@ export const columns: ColumnDef<Products>[] = [
       }).format(price);
 
       return (
-        <div className=" text-center font-bold text-slate-700 w-fit px-2">
+        <div className=" text-center font-bold w-fit px-2">
           {formatted}
         </div>
       );
@@ -108,7 +108,7 @@ export const columns: ColumnDef<Products>[] = [
     },
     cell: ({ row }) => {
       return (
-        <div className=" text-center font-bold text-slate-700 w-fit px-2">
+        <div className=" text-center font-bold w-fit px-2">
           {row.getValue("stock")}
         </div>
       );
@@ -124,9 +124,9 @@ export const columns: ColumnDef<Products>[] = [
 
       return (
         <div className=" flex flex-col items-start gap-2 min-w-[50px] w-fit px-2">
-          <p className="font-bold text-slate-400 w-fit text-xs ">
-            Status :{" "}
-            <span className="font-extrabold text-slate-600">
+          <p className="font-bold text-slate-400  dark:text-gray-300 w-fit text-xs ">
+            Score :{" "}
+            <span className="font-extrabold text-slate-600 dark:text-dark-text ">
               {statusTokens(rate).title}
             </span>
           </p>
@@ -151,7 +151,7 @@ export const columns: ColumnDef<Products>[] = [
             className="data-[state=checked]:bg-primary-1"
             defaultChecked={product.status}
           />
-          <span className=" font-semibold text-slate-400">Active</span>
+          <span className=" font-semibold text-slate-400 dark:text-dark-text ">Active</span>
         </div>
       );
     },

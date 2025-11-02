@@ -67,26 +67,27 @@ export function DataTable<TData, TValue>({
 
 
   return (
-    <div className="flex flex-col">
-      <div className="flex items-center gap-2 bg-[#F5F7F9] rounded-t-md  border border-b-0 p-4">
+    <div className="flex flex-col dark:text-white">
+
+      <div className="flex items-center gap-2 bg-[#F5F7F9] p-4 rounded-t-md  border border-b-0 text-slate-500 dark:text-dark-text dark:border-white  dark:bg-dark-2 ">
         <span className=" w-6 h-6 rounded-full bg-[#3CBEA9] border-[rgba(0,0,0,0.75)] border-1 shadow-[2px_0px_0px_0px_rgba(0,0,0,0.75)] "></span>
-        <p className="text-base text-slate-500 font-base ">
+        <p className="text-base font-base ">
           This dataTable show all of your product
         </p>
       </div>
 
       <DataTableToolbar table={table} />
 
-      <div className="overflow-hidden ">
-        <Table>
-          <TableHeader className="">
+      <div className="overflow-hidden">
+        <Table className="" >
+          <TableHeader className=" bg-primary-5  dark:bg-dark-2">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className="">
+              <TableRow key={headerGroup.id} className=" ">
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead
                       key={header.id}
-                      className=" text-slate-500 font-semibold text-center !border-r-0 "
+                      className=" text-slate-500 dark:text-dark-text     font-semibold text-center !border-r-0 "
                     >
                       {header.isPlaceholder
                         ? null
@@ -106,7 +107,7 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className=" bg-white"
+                  className=" bg-white dark:bg-dark-1 hover:dark:bg-dark-2 dark:text-white text-slate-700"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id} className=" text-center">
@@ -119,7 +120,7 @@ export function DataTable<TData, TValue>({
                 </TableRow>
               ))
             ) : (
-              <TableRow className=" bg-white">
+              <TableRow className=" bg-white dark:bg-dark-1 dark:text-dark-text ">
                 <TableCell
                   colSpan={columns.length}
                   className="h-24 text-center"
