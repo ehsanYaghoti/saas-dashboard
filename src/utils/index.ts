@@ -4,5 +4,8 @@ export function numberWithCommas(x : number) {
 
 
 export function checkTheme() {
+    console.log(
+    document.documentElement.classList.contains("dark")
+    )
     return document.documentElement.classList.contains("dark");
 }

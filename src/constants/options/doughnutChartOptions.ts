@@ -1,5 +1,6 @@
 import type { DoughnutProps } from "@/types/chart";
 import { titleTypography } from "../charts";
+import { checkTheme } from "@/utils";
 
 
 export const doughnutChartOptions: DoughnutProps["options"] = {
@@ -18,7 +19,7 @@ export const doughnutChartOptions: DoughnutProps["options"] = {
     },
   },
   cutout : "65%",
-  radius : "99%",
+  radius : "90%",
   plugins: {
     legend: {
       position: "top" as const,
@@ -27,6 +28,7 @@ export const doughnutChartOptions: DoughnutProps["options"] = {
     title: {
       display: false,
       fullSize: true,
+      color : checkTheme() ? "white" : "rgba(0,0,0,0.7)",
       text: "Sales by e-commerce platform",
       padding: {
         bottom: 10,

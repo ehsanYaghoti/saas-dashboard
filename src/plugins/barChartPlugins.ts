@@ -1,3 +1,4 @@
+import { checkTheme } from "@/utils";
 import type { Chart, Plugin } from "chart.js";
 
 export const progressBar: Plugin = {
@@ -22,7 +23,11 @@ export const progressBar: Plugin = {
       // label text
       let fontSizeLabel = 12;
       ctx.font = `bold ${fontSizeLabel}px Inter`;
-      ctx.fillStyle = "rgba(0,0,0,0.4)";
+      if(checkTheme()){
+        ctx.fillStyle = "white";
+      } else {
+        ctx.fillStyle = "rgba(0,0,0,0.4)";
+      }
       ctx.textAlign = "left";
       ctx.textBaseline = "middle";
       if (data.labels)
@@ -35,7 +40,14 @@ export const progressBar: Plugin = {
       // label value
       const fontSizeDataPoint = 15;
       ctx.font = `bolder ${fontSizeLabel}px Inter`;
-      ctx.fillStyle = "rgba(0,0,0,0.8)";
+      if(checkTheme()){
+        ctx.fillStyle = "white";
+        ctx.save()
+      } else {
+        ctx.fillStyle = "rgba(0,0,0,0.8)";
+        ctx.save()
+
+      }
       ctx.textAlign = "right";
       ctx.textBaseline = "middle";
       ctx.fillText(

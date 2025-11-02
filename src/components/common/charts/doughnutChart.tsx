@@ -13,8 +13,8 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 export function DoughnutChart() {
   return (
-    <div className="flex flex-col items-start [grid-area:d] w-auto min-h-72 bg-white rounded-lg border border-slate-200 shadow-md relative">
-      <h3 className="flex text-lg font-extrabold text-shadow-black p-6  text-slate-700 mb-0">
+    <div className="flex flex-col items-start [grid-area:d] w-auto min-h-72 bg-white dark:bg-dark-4 rounded-lg border border-slate-200 shadow-md relative">
+      <h3 className="flex text-lg font-extrabold text-shadow-black p-6  text-slate-700 dark:text-dark-text mb-0">
         Sales by e-commerce platform
       </h3>
       <Doughnut
@@ -23,7 +23,7 @@ export function DoughnutChart() {
         plugins={[lineLabelsPlugin, dashedFullArc]}
       />
 
-      <div className=" flex items-center gap-1 text-slate-500 absolute right-6 top-6 ">
+      <div className=" flex items-center gap-1 text-slate-500 dark:text-dark-text absolute right-6 top-6 ">
         <Button className="cursor-pointer " variant="ghost" size="icon">
           <Ellipsis />
         </Button>

@@ -1,3 +1,4 @@
+import { checkTheme } from "@/utils";
 import { degreeToRadian } from "@/utils/charts";
 import type { Chart, RadialLinearScale } from "chart.js";
 
@@ -25,7 +26,7 @@ export const radarTickLabels = {
     data.datasets[0]?.data?.forEach((dataPoint, index: number) => {
       ctx.save();
 
-      const degrees = (angle * index) - 30;
+      const degrees = angle * index - 30;
       const radians = degreeToRadian(degrees);
       const xCoor = Math.cos(radians);
       const yCoor = -drawingArea + Math.sin(radians);
@@ -38,13 +39,15 @@ export const radarTickLabels = {
 
       const fontSizeDataPoint = 15;
       ctx.font = `bolder ${fontSizeDataPoint}px Inter`;
-      ctx.fillStyle = "rgba(0,0,0,0.8)";
-    //   ctx.fillRect(xCoor, yCoor - 10 , 10 , 10);
+      if (checkTheme()) {
+        ctx.fillStyle = "white";
+      } else {
+        ctx.fillStyle = "rgba(0,0,0,0.8)";
+      }
+      //   ctx.fillRect(xCoor, yCoor - 10 , 10 , 10);
       ctx.fillText(`${dataPoint}`, xCoor, yCoor - 10);
 
       ctx.restore();
-
     });
-
   },
 };

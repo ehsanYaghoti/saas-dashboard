@@ -1,5 +1,6 @@
 import type { DoughnutProps } from "@/types/chart";
 import { titleTypography } from "../charts";
+import { checkTheme } from "@/utils";
 
 export const gaugeChartOptions: DoughnutProps["options"] = {
   responsive: true,
@@ -34,13 +35,13 @@ export const gaugeChartOptions: DoughnutProps["options"] = {
     subtitle: {
       display: true,
       text: "an overview of your users",
+      color :  checkTheme() ? "white" : "rgba(0,0,0,0.4)",
       padding: {
         bottom: 0,
       },
       position: "top",
       align: "start",
       font: { size: 16, weight: 500, family: "Inter" },
-      color: "rgba(0,0,0,0.4)",
     },
     tooltip: {
       usePointStyle: true,

@@ -1,14 +1,14 @@
 import type { DoughnutProps } from "@/types/chart";
 import UsersImg from "@/assets/charts/users.svg";
 import { degreeToRadian } from "@/utils/charts";
-
+import { checkTheme } from "@/utils";
 
 export const dashedArc: DoughnutProps["plugin"] = {
   id: "dashedArc",
   afterDatasetDraw(chart) {
     const {
       ctx,
-      chartArea: { left, bottom , width , height  },
+      chartArea: { left, bottom, width, height },
     } = chart;
 
     // console.log(options.scales)
@@ -18,7 +18,14 @@ export const dashedArc: DoughnutProps["plugin"] = {
     ctx.setLineDash([2, 2]);
 
     ctx.beginPath();
-    ctx.arc(left + width / 2, (bottom - height / 3) + 5  , ((width + height) / 5) + 30  , degreeToRadian(10), degreeToRadian(170) , true);
+    ctx.arc(
+      left + width / 2,
+      bottom - height / 3 + 5,
+      (width + height) / 5 + 30,
+      degreeToRadian(10),
+      degreeToRadian(170),
+      true
+    );
 
     ctx.lineWidth = 15;
     ctx.strokeStyle = "#D9DCE4";
@@ -29,18 +36,23 @@ export const dashedArc: DoughnutProps["plugin"] = {
 
     // line arc
     ctx.beginPath();
-    ctx.arc(left + width / 2, (bottom - height / 2) + 56, ((width + height) / 5) + 14 , degreeToRadian(10), degreeToRadian(170) , true);
+    ctx.arc(
+      left + width / 2,
+      bottom - height / 2 + 56,
+      (width + height) / 5 + 14,
+      degreeToRadian(10),
+      degreeToRadian(170),
+      true
+    );
 
     ctx.lineWidth = 2;
     ctx.strokeStyle = "#DBE1EA";
 
     ctx.stroke();
-
-
   },
 };
 
-const img = new Image();
+export const img = new Image();
 img.src = UsersImg;
 
 export const textsMiddle: DoughnutProps["plugin"] = {
@@ -61,7 +73,7 @@ export const textsMiddle: DoughnutProps["plugin"] = {
     // img
 
     if (img.complete) {
-      ctx.drawImage(img, width / 2 - 10 , bottom - 185, 60, 60);
+      ctx.drawImage(img, width / 2 - 10, bottom - 185, 60, 60);
     } else {
       img.onload = () => chart.draw();
     }
@@ -74,15 +86,23 @@ export const textsMiddle: DoughnutProps["plugin"] = {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = "bold 30px Inter";
-    ctx.fillStyle = "rgba(0,0,0,0.7)";
+    if (checkTheme()) {
+      ctx.fillStyle = "white";
+    } else {
+      ctx.fillStyle = "rgba(0,0,0,0.7)";
+    }
     ctx.fillText(
       `${sum}`.replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-      (width / 2) + 25,
+      width / 2 + 25,
       bottom - 100
     );
 
     ctx.font = "14px Inter";
-    ctx.fillStyle = "rgba(0,0,0,0.4)";
-    ctx.fillText("Total Users", (width / 2) + 25, bottom - 70);
+    if (checkTheme()) {
+      ctx.fillStyle = "white";
+    } else {
+      ctx.fillStyle = "rgba(0,0,0,0.4)";
+    }
+    ctx.fillText("Total Users", width / 2 + 25, bottom - 70);
   },
 };

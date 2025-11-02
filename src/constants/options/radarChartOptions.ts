@@ -1,5 +1,6 @@
 import type { RadarProps } from "@/types/chart";
 import { primaryColor, titleTypography } from "../charts";
+import { checkTheme } from "@/utils";
 
 export const radarChartOptions: RadarProps["options"] = {
   responsive: true,
@@ -18,7 +19,9 @@ export const radarChartOptions: RadarProps["options"] = {
     r: {
       startAngle: -30,
       pointLabels: {
-        color: "rgba(0,0,0,0.4)",
+        color: () => {
+            return checkTheme() ? "white" : "rgba(0,0,0,0.4)"
+        },
         padding : 25,
         font: {
           size: 10,
@@ -29,6 +32,9 @@ export const radarChartOptions: RadarProps["options"] = {
       // display : false,
       angleLines: {
         // display : false
+        color : () => {
+            return checkTheme() ? "rgba(250 , 250 , 250 , 0.2)" : "rgba(0 , 0 , 0 , 0.1)";
+        },
         lineWidth: 2,
       },
       grid: {
@@ -40,7 +46,7 @@ export const radarChartOptions: RadarProps["options"] = {
             context.index == context.chart.data.datasets[0].data.length ||
             context.index == 4
           ) {
-            return "rgba(0 , 0 , 0 , 0.1)";
+            return checkTheme() ? "rgba(250 , 250 , 250 , 0.2)" : "rgba(0 , 0 , 0 , 0.1)";
           }
           return "rgba(0 , 0 , 0 , 0.0)";
         },

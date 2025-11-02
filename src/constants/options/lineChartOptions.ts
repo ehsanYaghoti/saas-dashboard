@@ -74,6 +74,7 @@ export const lineChartOptions: LineProps["options"] = {
       },
       border: {
         // display: false,
+        color : checkTheme() ? "white" : "rgba(0,0,0,0.1)" ,
         dash: [3, 5],
       },
       grid: {
@@ -109,7 +110,9 @@ export const lineChartOptions: LineProps["options"] = {
           // enabled: true,
         },
         align: "start",
-        color: checkTheme() ? "white" : "rgba(0,0,0,0.5)",
+        color: () => {
+            return checkTheme() ? "white" : "rgba(0,0,0,0.5)"
+        },
         padding: 6,
         font: { weight: 600 },
       },
@@ -118,7 +121,7 @@ export const lineChartOptions: LineProps["options"] = {
         // dash : [1 ,4]
       },
       grid: {
-        color : checkTheme() ? "rgb(255,255,255)" : "rgba(0,0,0,0.1)"
+        color : () => checkTheme() ? "rgb(255,255,255)" : "rgba(0,0,0,0.1)"
         // drawOnChartArea: true,
         // display : false
       },

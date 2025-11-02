@@ -27,15 +27,14 @@ ChartJS.register(
 
 export function HorizontalBarChart() {
   return (
-    <div className="flex flex-col items-start [grid-area:b] bg-white rounded-lg border border-slate-200 shadow-md relative">
+    <div className="flex flex-col items-start [grid-area:b] bg-white dark:bg-dark-4  rounded-lg border border-slate-200 shadow-md relative">
       <Bar
       id="myChart"
         options={barChartOptions}
         data={barChartdata}
         plugins={[progressBar, imageLabels]}
-
       />
-      <div className=" flex items-center gap-1 text-slate-500 absolute right-6 top-6 ">
+      <div className=" flex items-center gap-1 text-slate-500 dark:text-dark-text absolute right-6 top-6 ">
         <Button className="cursor-pointer " variant="ghost" size="icon">
           <Ellipsis />
         </Button>

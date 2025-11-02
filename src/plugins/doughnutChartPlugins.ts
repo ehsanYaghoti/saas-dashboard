@@ -3,18 +3,18 @@ import img1 from "@/assets/charts/tokopedia.svg";
 import img2 from "@/assets/charts/alibaba.svg";
 import img3 from "@/assets/charts/amazon.svg";
 import { degreeToRadian } from "@/utils/charts";
-
+// import { img } from "./gaugeChartPlugins";
+import { checkTheme } from "@/utils";
 
 export const dashedFullArc: DoughnutProps["plugin"] = {
   id: "dashedFullArc",
   afterDatasetDraw(chart) {
     const {
       ctx,
-      chartArea: { left, bottom , width , height},
+      chartArea: { left, bottom, width, height },
     } = chart;
 
-
-    console.log((width + height) / 5)
+    // console.log((width + height) / 5);
 
     ctx.save();
 
@@ -22,7 +22,14 @@ export const dashedFullArc: DoughnutProps["plugin"] = {
     ctx.setLineDash([1, 1]);
 
     ctx.beginPath();
-    ctx.arc(left + width / 2, bottom - height / 2  , (width + height) / 8 , degreeToRadian(0), degreeToRadian(360) , true);
+    ctx.arc(
+      left + width / 2,
+      bottom - height / 2,
+      (width + height) / 10,
+      degreeToRadian(0),
+      degreeToRadian(360),
+      true
+    );
 
     ctx.lineWidth = 10;
     ctx.strokeStyle = "#D9DCE4";
@@ -33,7 +40,14 @@ export const dashedFullArc: DoughnutProps["plugin"] = {
 
     // line arc 1
     ctx.beginPath();
-    ctx.arc(left + width / 2, bottom - height / 2, ((width + height) / 4) + 5 , degreeToRadian(0), degreeToRadian(360) , true);
+    ctx.arc(
+      left + width / 2,
+      bottom - height / 2,
+      (width + height) / 5 + 10,
+      degreeToRadian(0),
+      degreeToRadian(360),
+      true
+    );
 
     ctx.lineWidth = 2;
     ctx.strokeStyle = "#E2E6EC";
@@ -42,7 +56,14 @@ export const dashedFullArc: DoughnutProps["plugin"] = {
 
     // line arc 2
     ctx.beginPath();
-    ctx.arc(left + width / 2, bottom - height / 2, ((width + height) / 4) + 10 , degreeToRadian(0), degreeToRadian(360) , true);
+    ctx.arc(
+      left + width / 2,
+      bottom - height / 2,
+      (width + height) / 5 + 15,
+      degreeToRadian(0),
+      degreeToRadian(360),
+      true
+    );
 
     ctx.lineWidth = 10;
     ctx.strokeStyle = "#F1F3F5";
@@ -51,21 +72,26 @@ export const dashedFullArc: DoughnutProps["plugin"] = {
 
     // line arc 3
     ctx.beginPath();
-    ctx.arc(left + width / 2, bottom - height / 2, ((width + height) / 4) + 25 , degreeToRadian(0), degreeToRadian(360) , true);
+    ctx.arc(
+      left + width / 2,
+      bottom - height / 2,
+      (width + height) / 5 + 35,
+      degreeToRadian(0),
+      degreeToRadian(360),
+      true
+    );
 
     ctx.lineWidth = 2;
     ctx.strokeStyle = "#EAEEF3";
 
     ctx.stroke();
-
-
   },
 };
 
-let images : HTMLImageElement[] = [img1, img2, img3].map((image) => {
+let images: HTMLImageElement[] = [img1, img2, img3].map((image) => {
   const img = new Image();
   img.src = image;
-  return img
+  return img;
 });
 
 export const lineLabelsPlugin: DoughnutProps["plugin"] = {
@@ -98,13 +124,17 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
         ctx.save();
         ctx.translate(x, y);
         ctx.rotate(angle);
-        ctx.fillStyle = lineColor;
+        if (checkTheme()) {
+          ctx.fillStyle = "white";
+        } else {
+          ctx.fillStyle = lineColor;
+        }
         ctx.fillRect(0 - 2, 0 - 2, 4, 4);
         ctx.restore();
 
         // label and data positions
-        const xLine = x >= halfWidth ? x + 30 : x - 30;
-        const yLine = y >= halfHeight ? y + 30 : y - 30;
+        const xLine = x >= halfWidth ? x + 40 : x - 40;
+        const yLine = y >= halfHeight ? y + 60 : y - 60;
         const xStraightLine = x >= halfWidth ? 10 : -10;
         // console.log( y )
         // console.log(height)
@@ -117,7 +147,11 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
         ctx.lineWidth = 2;
         ctx.lineTo(xLine, yLine);
         ctx.lineTo(xLine + xStraightLine, yLine);
-        ctx.strokeStyle = lineColor;
+        if(checkTheme()){
+            ctx.strokeStyle = "white";
+        } else {
+            ctx.strokeStyle = lineColor;
+        }
         ctx.stroke();
 
         // image
@@ -150,10 +184,30 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
         // control the position
         ctx.textAlign = x >= halfWidth ? "left" : "right";
         ctx.textBaseline = "middle";
-        ctx.fillStyle = "rgba(0,0,0,0.5)";
+
+        if (checkTheme()) {
+            console.log("update")
+          ctx.fillStyle = "white";
+          ctx.shadowColor = "rgba(0,0,0,0.5)";
+        } else {
+          ctx.fillStyle = "rgba(0,0,0,0.5)";
+        }
+        ctx.shadowOffsetX = 3;
+        ctx.shadowOffsetY = 3;
+        ctx.shadowBlur = 6;
         ctx.fillText(label, xLine + xStraightLine, yLine + 20);
-        ctx.fillStyle = "rgba(0,0,0,0.7)";
+        if (checkTheme()) {
+          ctx.fillStyle = "white";
+        } else {
+          ctx.fillStyle = "rgba(0,0,0,0.7)";
+        }
         ctx.font = "800 14px Inter";
+        if (checkTheme()) {
+            ctx.shadowColor = "rgba(0,0,0,0.7)";
+        }
+        ctx.shadowOffsetX = 3;
+        ctx.shadowOffsetY = 3;
+        ctx.shadowBlur = 6;
         ctx.fillText(`${dataLabel}%`, xLine + xStraightLine, yLine + 40);
       });
     });

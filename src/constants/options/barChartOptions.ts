@@ -1,6 +1,8 @@
 import type { BarProps } from "@/types/chart";
 import { titleTypography } from "../charts";
+import { checkTheme } from "@/utils";
 
+console.log("check theme " + checkTheme())
 export const barChartOptions: BarProps["options"] = {
   responsive: true,
   aspectRatio: 1,
@@ -55,6 +57,11 @@ export const barChartOptions: BarProps["options"] = {
       display: true,
       fullSize: true,
       text: "Session by Country",
+      //   color : isDark ? "white" : "rgba(0,0,0,0.8)",
+        // color: (context) => {
+        //  return  checkTheme() ? "white" : "rgba(0,0,0,0.4)" as CanvasPattern
+        // },
+      align : 'start',
       padding: {
         bottom: 10,
       },
@@ -64,7 +71,7 @@ export const barChartOptions: BarProps["options"] = {
       display: true,
       align: "start",
       font: { size: 14, weight: 500 },
-      color: "rgba(0,0,0,0.4)",
+      color: checkTheme() ? "white" : "rgba(0,0,0,0.4)",
       padding: {
         bottom: 20,
       },
