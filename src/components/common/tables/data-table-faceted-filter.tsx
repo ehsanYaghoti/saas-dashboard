@@ -1,86 +1,51 @@
-import { productsTableData } from "@/constants/data/table/products";
-import type { Table } from "@tanstack/react-table";
-import { useState, type MouseEvent } from "react";
+import { lowStockCount, productsTableData } from "@/constants/data/table/products";
+import type { Column, Table } from "@tanstack/react-table";
+import { type Dispatch, type MouseEvent, type SetStateAction } from "react";
 
-export default function DataTableFacetedFilter<TData>({
+
+interface DataTableFacetedFilterProps<TData, TValue> {
+  table : Table<TData>
+  tabIndex : number
+  setTabIndex: Dispatch<SetStateAction<number>>
+  title ?: string
+  column ?: Column<TData , TValue>
+  options : {
+    tabIndexProp : number,
+    valueProp : number | string | boolean | undefined,
+    type: "range" | "value",
+  }
+}
+
+export default function DataTableFacetedFilter<TData , TValue>({
   table,
-}: {
-  table: Table<TData>;
-}) {
-  const [tabIndex, setTabIndex] = useState(0);
+  tabIndex,
+  setTabIndex,
+  title,
+  column,
+  options
+}: DataTableFacetedFilterProps<TData , TValue>) {
 
   let filterFacetingHandler = (
     e: MouseEvent<HTMLButtonElement>,
-    columnKey: string,
-    value: number | string | boolean | undefined,
-    type: "range" | "value",
-    tab: number
   ) => {
     e.preventDefault();
 
-    setTabIndex(tab);
+    setTabIndex(options.tabIndexProp);
 
-    const column = table.getColumn(columnKey);
     table.resetColumnFilters();
 
     column?.setFilterValue(undefined);
-    if (type === "value") {
-      column?.setFilterValue(value);
-    } else if (type === "range") {
-      column?.setFilterValue([1 , value]);
+
+    if (options.type === "value") {
+      column?.setFilterValue(options.valueProp);
+    } else if (options.type === "range") {
+      column?.setFilterValue([1 , options.valueProp]);
     }
   };
 
+  console.log(lowStockCount)
 
   return (
-    <div
-      className="h-full flex  items-center gap-6
-                    font-[600] text-base text-slate-400
-                "
-    >
-      <button
-        type="button"
-        className={`
-            relative flex items-center gap-2
-            font-bold
-            ${
-              tabIndex === 0 &&
-              "text-primary-1 bg-white after:h-[3px]  after:content-['']"
-            }
-            after:w-full after:absolute after:bg-primary-1
-            after:rounded-full after:-bottom-[1px] after:left-0
-            hover:bg-green-50  cursor-pointer px-2 h-full
-        `}
-        onClick={(e) =>
-          filterFacetingHandler(e, "status", undefined, "value", 0)
-        }
-      >
-        All products
-        <span className="ml-auto flex size-4 items-center justify-center font-mono text-sm bg-green-100 rounded-full p-3 text-primary-1">
-          {productsTableData.length}
-        </span>
-      </button>
-      {table.getColumn("status") && (
-        <button
-          type="button"
-          className={`
-            relative flex items-center gap-2 font-bold
-            ${
-              tabIndex === 1 &&
-              "text-primary-1 bg-white after:h-[3px]  after:content-['']"
-            }
-            after:w-full after:absolute after:bg-primary-1
-            after:rounded-full after:-bottom-[1px] after:left-0
-            hover:bg-green-50  cursor-pointer px-2 h-full
-        `}
-          onClick={(e) => filterFacetingHandler(e, "status", true, "value", 1)}
-        >
-          Live
-          <span className="ml-auto flex size-4 items-center justify-center font-mono text-sm bg-green-100 rounded-full p-3 text-primary-1">
-            {table?.getColumn("status")?.getFacetedUniqueValues().get(true) ? table?.getColumn("status")?.getFacetedUniqueValues().get(true) : 0}
-          </span>
-        </button>
-      )}
 
       <button
         type="button"
@@ -88,58 +53,21 @@ export default function DataTableFacetedFilter<TData>({
             relative flex items-center gap-2
             font-bold
             ${
-              tabIndex === 2 &&
-              "text-primary-1 bg-white after:h-[3px]  after:content-['']"
+              tabIndex === options.tabIndexProp &&
+              "text-primary-1 after:h-[3px]  after:content-['']"
             }
             after:w-full after:absolute after:bg-primary-1
             after:rounded-full after:-bottom-[1px] after:left-0
-            hover:bg-green-50  cursor-pointer px-2 h-full
+            hover:bg-green-50 dark:hover:bg-dark-2  cursor-pointer px-2 h-full
         `}
-        onClick={(e) => filterFacetingHandler(e, "status", false, "value", 2)}
+        onClick={(e) =>
+          filterFacetingHandler(e)
+        }
       >
-        Archive
+        {title}
         <span className="ml-auto flex size-4 items-center justify-center font-mono text-sm bg-green-100 rounded-full p-3 text-primary-1">
-          {table?.getColumn("status")?.getFacetedUniqueValues().get(false) ? table?.getColumn("status")?.getFacetedUniqueValues().get(false) : 0}
+          {options.tabIndexProp === 0 ? productsTableData.length : options.tabIndexProp === 4 ? lowStockCount : column?.getFacetedUniqueValues().get(options.valueProp) ? column?.getFacetedUniqueValues().get(options.valueProp) : 0}
         </span>
       </button>
-      <button
-        type="button"
-        className={`
-            relative flex items-center gap-2 font-bold
-            ${
-              tabIndex === 3 &&
-              "text-primary-1 bg-white after:h-[3px]  after:content-['']"
-            }
-            after:w-full after:absolute after:bg-primary-1
-            after:rounded-full after:-bottom-[1px] after:left-0
-            hover:bg-green-50  cursor-pointer px-2 h-full
-        `}
-        onClick={(e) => filterFacetingHandler(e, "stock", 0, "range", 3)}
-      >
-        Out of Stock
-        <span className="ml-auto flex size-4 items-center justify-center font-mono text-sm bg-green-100 rounded-full p-3 text-primary-1">
-          {table?.getColumn("stock")?.getFacetedUniqueValues().get(0) ? table?.getColumn("stock")?.getFacetedUniqueValues().get(0) : 0}
-        </span>
-      </button>
-      <button
-        type="button"
-        className={`
-            relative flex items-center gap-2 font-bold
-            ${
-              tabIndex === 4 &&
-              "text-primary-1 bg-white after:h-[3px]  after:content-['']"
-            }
-            after:w-full after:absolute after:bg-primary-1
-            after:rounded-full after:-bottom-[1px] after:left-0
-            hover:bg-green-50  cursor-pointer px-2 h-full
-        `}
-        onClick={(e) => filterFacetingHandler(e, "stock", 5, "range", 4)}
-      >
-        Low Stock
-        <span className="ml-auto flex size-4 items-center justify-center font-mono text-sm bg-green-100 rounded-full p-3 text-primary-1">
-          {table?.getColumn("stock")?.getFacetedUniqueValues().get(4) ? table?.getColumn("stock")?.getFacetedUniqueValues().get(4) : 0}
-        </span>
-      </button>
-    </div>
   );
 }
