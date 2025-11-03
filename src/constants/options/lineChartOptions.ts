@@ -1,6 +1,9 @@
 import type { LineProps } from "@/types/chart";
 import { titleTypography } from "../charts";
 import { checkTheme } from "@/utils";
+// import type { ScriptableContext } from "chart.js";
+
+
 
 export const lineChartOptions: LineProps["options"] = {
   responsive: true,
@@ -70,11 +73,14 @@ export const lineChartOptions: LineProps["options"] = {
           }
           return "";
         },
-        color: checkTheme() ? "white"  : "#B0B9C8",
+        color: () => {
+            // console.log("line chart theme " , checkTheme())
+            return checkTheme() ? "white"  : "#B0B9C8"
+        }
       },
       border: {
         // display: false,
-        color : checkTheme() ? "white" : "rgba(0,0,0,0.1)" ,
+        color : checkTheme() ? "white" : "rgba(0,0,0,0.2)" ,
         dash: [3, 5],
       },
       grid: {
@@ -129,7 +135,6 @@ export const lineChartOptions: LineProps["options"] = {
   },
   plugins: {
     htmlLegend: {
-      // ID of the container to put the legend in
       containerID: "legend-container",
     },
     legend: {

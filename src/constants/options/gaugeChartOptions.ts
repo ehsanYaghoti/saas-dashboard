@@ -1,22 +1,28 @@
+// import type { DoughnutProps } from "@/types/chart";
 import type { DoughnutProps } from "@/types/chart";
-import { titleTypography } from "../charts";
-import { checkTheme } from "@/utils";
+// import { titleTypography } from "../charts";
+// import { checkTheme } from "@/utils";
 
-export const gaugeChartOptions: DoughnutProps["options"] = {
+type GetOptions = ({ isDark }: { isDark: boolean }) => DoughnutProps["options"];
+
+export const getGaugeChartOptions: GetOptions = ({ isDark }) => ({
   responsive: true,
   maintainAspectRatio: true,
-  aspectRatio : 1,
+  aspectRatio: 1,
   circumference: 200,
   rotation: 260,
-  animation : {
-    duration : 2000,
-    easing : "easeOutQuad"
+  animation: {
+    duration: 2000,
+    easing: "easeOutQuad",
+  },
+  animations : {
+    
   },
   layout: {
-    padding : 24
+    padding: 24,
   },
   cutout: "85%",
-  radius : "80%",
+  radius: "80%",
   plugins: {
     legend: {
       position: "top" as const,
@@ -29,13 +35,15 @@ export const gaugeChartOptions: DoughnutProps["options"] = {
       padding: {
         bottom: 10,
       },
-
-      ...titleTypography,
+      position: "top",
+      align: "start",
+      font: { size: 18, weight: 600, family: "Inter" },
+      color: isDark ? "rgba(250 , 250 , 250 , 0.8)" : "rgba(0,0,0,0.8)",
     },
     subtitle: {
       display: true,
       text: "an overview of your users",
-      color :  checkTheme() ? "white" : "rgba(0,0,0,0.4)",
+      color: isDark ? "white" : "rgba(0,0,0,0.4)",
       padding: {
         bottom: 0,
       },
@@ -47,4 +55,4 @@ export const gaugeChartOptions: DoughnutProps["options"] = {
       usePointStyle: true,
     },
   },
-};
+});

@@ -1,28 +1,30 @@
 import type { RadarProps } from "@/types/chart";
-import { primaryColor, titleTypography } from "../charts";
-import { checkTheme } from "@/utils";
+import { primaryColor } from "../charts";
+// import { checkTheme } from "@/utils";
 
-export const radarChartOptions: RadarProps["options"] = {
+type GetOptions = ({ isDark }: { isDark: boolean }) => RadarProps["options"];
+
+export const getRadarChartOptions: GetOptions = ({ isDark }) => ({
   responsive: true,
   aspectRatio: 1,
   interaction: {
     // mode: "index",
     intersect: false,
   },
-  animation : {
-    duration : 2000,
-    easing : "easeOutQuad"
+  animation: {
+    duration: 2000,
+    easing: "easeOutQuad",
   },
-  layout : {padding : 24},
+  layout: { padding: 24 },
   // clip: {left: 5, top: 100, right: -2, bottom: 0},
   scales: {
     r: {
       startAngle: -30,
       pointLabels: {
         color: () => {
-            return checkTheme() ? "white" : "rgba(0,0,0,0.4)"
+          return isDark ? "white" : "rgba(0,0,0,0.4)";
         },
-        padding : 25,
+        padding: 25,
         font: {
           size: 10,
           weight: "bold",
@@ -32,8 +34,10 @@ export const radarChartOptions: RadarProps["options"] = {
       // display : false,
       angleLines: {
         // display : false
-        color : () => {
-            return checkTheme() ? "rgba(250 , 250 , 250 , 0.2)" : "rgba(0 , 0 , 0 , 0.1)";
+        color: () => {
+          return isDark
+            ? "rgba(250 , 250 , 250 , 0.2)"
+            : "rgba(0 , 0 , 0 , 0.1)";
         },
         lineWidth: 2,
       },
@@ -46,7 +50,9 @@ export const radarChartOptions: RadarProps["options"] = {
             context.index == context.chart.data.datasets[0].data.length ||
             context.index == 4
           ) {
-            return checkTheme() ? "rgba(250 , 250 , 250 , 0.2)" : "rgba(0 , 0 , 0 , 0.1)";
+            return isDark
+              ? "rgba(250 , 250 , 250 , 0.2)"
+              : "rgba(0 , 0 , 0 , 0.1)";
           }
           return "rgba(0 , 0 , 0 , 0.0)";
         },
@@ -76,7 +82,10 @@ export const radarChartOptions: RadarProps["options"] = {
       padding: {
         bottom: 30,
       },
-      ...titleTypography,
+      position: "top",
+      align: "start",
+      font: { size: 18, weight: 600, family: "Inter" },
+      color: isDark ? "rgba(250 , 250 , 250 , 0.8)" : "rgba(0,0,0,0.8)",
     },
     legend: { display: false },
     tooltip: {
@@ -85,4 +94,4 @@ export const radarChartOptions: RadarProps["options"] = {
       titleMarginBottom: 10,
     },
   },
-};
+});

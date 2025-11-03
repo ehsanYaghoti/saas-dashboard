@@ -12,6 +12,6 @@ export const chartAreaPadding: Plugin = {
       left: chartArea.left + 50,
       right: chartArea.right - 20,
     };
-    console.log(chartArea)
+    // console.log(chartArea)
   },
 };

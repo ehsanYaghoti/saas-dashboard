@@ -28,7 +28,6 @@ ChartJS.register(
   Tooltip,
   Legend,
   TimeScale,
-  annotationPlugin
 );
 
 

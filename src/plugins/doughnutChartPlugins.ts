@@ -186,7 +186,7 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
         ctx.textBaseline = "middle";
 
         if (checkTheme()) {
-            console.log("update")
+            // console.log("update")
           ctx.fillStyle = "white";
           ctx.shadowColor = "rgba(0,0,0,0.5)";
         } else {

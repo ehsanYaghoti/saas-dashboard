@@ -1,16 +1,22 @@
 import type { BarProps } from "@/types/chart";
-import { titleTypography } from "../charts";
-import { checkTheme } from "@/utils";
+// import { titleTypography } from "../charts";
+// import { checkTheme } from "@/utils";
 
-console.log("check theme " + checkTheme())
-export const barChartOptions: BarProps["options"] = {
+type GetOptions = ({ isDark }: { isDark: boolean }) => BarProps["options"];
+
+export const getBarChartOptions: GetOptions = ({ isDark }) => ({
   responsive: true,
   aspectRatio: 1,
   maintainAspectRatio: true,
-  layout : {padding : 24},
+  layout: { padding: 24 },
   animation: {
     duration: 2000,
-    easing : "easeOutQuad",
+    easing: "easeOutQuad",
+  },
+  animations: {
+    x: {
+      from: 0,
+    },
   },
   indexAxis: "y" as const,
   elements: {
@@ -20,8 +26,8 @@ export const barChartOptions: BarProps["options"] = {
   },
   scales: {
     y: {
-        offset : true,
-        offsetAfterAutoskip: true,
+      offset: true,
+      offsetAfterAutoskip: true,
       grid: {
         display: false,
         drawOnChartArea: false,
@@ -31,8 +37,8 @@ export const barChartOptions: BarProps["options"] = {
       },
       ticks: {
         display: true,
-        padding : -12,
-        color : 'rgba(0,0,0,0.0)',
+        padding: -12,
+        color: "rgba(0,0,0,0)",
       },
     },
     x: {
@@ -58,24 +64,24 @@ export const barChartOptions: BarProps["options"] = {
       fullSize: true,
       text: "Session by Country",
       //   color : isDark ? "white" : "rgba(0,0,0,0.8)",
-        // color: (context) => {
-        //  return  checkTheme() ? "white" : "rgba(0,0,0,0.4)" as CanvasPattern
-        // },
-      align : 'start',
+      color: isDark ? "white" : "rgba(0,0,0,0.4)",
+      align: "start",
+      position: "top",
+      font: { size: 18, weight: 600, family: "Inter" },
       padding: {
         bottom: 10,
       },
-      ...titleTypography,
+      // ...titleTypography,
     },
     subtitle: {
       display: true,
       align: "start",
       font: { size: 14, weight: 500 },
-      color: checkTheme() ? "white" : "rgba(0,0,0,0.4)",
+      color: isDark ? "white" : "rgba(0,0,0,0.4)",
       padding: {
         bottom: 20,
       },
       text: "Showing Data for Top Session",
     },
   },
-};
+});

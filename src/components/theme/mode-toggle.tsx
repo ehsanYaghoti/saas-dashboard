@@ -22,10 +22,22 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+        <DropdownMenuItem onClick={() => {
+            setTheme("light")
+            // const ctx = document.getElementById('myChartHorizontalBar') as CanvasRenderingContext2D
+            // ctx?.reset()
+            // const ctx = document?.getElementById("myChartHorizontalBar")?.getContext("2d") as CanvasRenderingContext2D;
+
+            }}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        <DropdownMenuItem onClick={() => {
+            setTheme("dark")
+            // const ctx = document.getElementById('myChartHorizontalBar')
+            // const ctx = document?.getElementById("myChartHorizontalBar")?.getContext("2d") as CanvasRenderingContext2D;
+            // ctx.canvas.classList.add('text-white')
+
+            }}>
           Dark
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>

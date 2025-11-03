@@ -13,7 +13,7 @@ import DashboardLayout from "./components/layouts/dashbaordLayout";
 function App() {
   return (
     <DashboardLayout>
-      <div className=" w-full overflow-hidden">
+      <div className=" w-full overflow-hidden ">
         <Header title="Overview" buttons={["Custimize Widget" , "Filter" , "Share" ]} />
         <main className="w-full h-full bg-[#FAFCFE] flex flex-col gap-8 shrink grow basis-auto  dark:bg-gray-900 p-10 ">
           <div className="flex flex-wrap items-center gap-5 w-full justify-between ">
@@ -43,8 +43,8 @@ function App() {
             />
           </div>
           <div className="w-full grid grid-cols-3 [grid-template-areas:'a_a_b'_'c_d_e'] gap-8">
-            <ChartLine />
             <HorizontalBarChart />
+            <ChartLine />
             <RadarChart />
             <DoughnutChart />
             <GaugeChart />

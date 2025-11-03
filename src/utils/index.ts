@@ -4,8 +4,10 @@ export function numberWithCommas(x : number) {
 
 
 export function checkTheme() {
-    console.log(
-    document.documentElement.classList.contains("dark")
-    )
-    return document.documentElement.classList.contains("dark");
+    // console.log(
+    // document.documentElement.classList.contains("dark")
+    // )
+    // console.log( "theme storage " , localStorage.getItem("vite-ui-theme") === "dark")
+
+    return document.documentElement.classList.contains("dark")
 }

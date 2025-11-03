@@ -3,7 +3,7 @@ import type { Chart, Plugin } from "chart.js";
 
 export const progressBar: Plugin = {
   id: "progressBar",
-  beforeDatasetDraw(chart: Chart<"bar">) {
+  beforeDraw(chart: Chart<"bar">) {
     const {
       ctx,
       data,
@@ -40,13 +40,11 @@ export const progressBar: Plugin = {
       // label value
       const fontSizeDataPoint = 15;
       ctx.font = `bolder ${fontSizeLabel}px Inter`;
-      if(checkTheme()){
+    //   console.log("dark " + document.documentElement.className.includes('dark') )
+      if(document.documentElement.className.includes('dark')){
         ctx.fillStyle = "white";
-        ctx.save()
       } else {
         ctx.fillStyle = "rgba(0,0,0,0.8)";
-        ctx.save()
-
       }
       ctx.textAlign = "right";
       ctx.textBaseline = "middle";
