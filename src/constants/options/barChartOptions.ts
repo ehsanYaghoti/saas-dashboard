@@ -63,8 +63,7 @@ export const getBarChartOptions: GetOptions = ({ isDark }) => ({
       display: true,
       fullSize: true,
       text: "Session by Country",
-      //   color : isDark ? "white" : "rgba(0,0,0,0.8)",
-      color: isDark ? "white" : "rgba(0,0,0,0.4)",
+      color: isDark ? "white" : "rgba(0,0,0,0.8)",
       align: "start",
       position: "top",
       font: { size: 18, weight: 600, family: "Inter" },
@@ -76,7 +75,7 @@ export const getBarChartOptions: GetOptions = ({ isDark }) => ({
     subtitle: {
       display: true,
       align: "start",
-      font: { size: 14, weight: 500 },
+      font: { size: 16, weight: 500 , font : "Inter" },
       color: isDark ? "white" : "rgba(0,0,0,0.4)",
       padding: {
         bottom: 20,

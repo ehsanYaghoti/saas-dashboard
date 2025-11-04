@@ -38,8 +38,8 @@ export const dashedArc: DoughnutProps["plugin"] = {
     ctx.beginPath();
     ctx.arc(
       left + width / 2,
-      bottom - height / 2 + 56,
-      (width + height) / 5 + 14,
+      bottom - height / 2 + 62,
+      (width + height) / 5 + 16,
       degreeToRadian(10),
       degreeToRadian(170),
       true

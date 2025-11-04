@@ -8,7 +8,31 @@ export const doughnutChartOptions: DoughnutProps["options"] = {
   maintainAspectRatio : true,
   animation : {
     duration : 2000,
-    easing : "easeOutQuad"
+    easing : "easeOutQuad",
+    animateRotate : true,
+    animateScale : true
+  },
+  transitions : {
+    show : {
+        animations : {
+            
+        }
+    }
+  },
+  animations: {
+    // ["fadeIn"]: {
+    //   properties: ['borderColor' , 'backgroundColor' ,'color'],
+    //   type: 'color',
+    //   from: 'transparent',
+    // },
+    ['show'] : {
+        properties : ['x', 'y', 'borderWidth', 'radius', 'tension'],
+        type: 'number',
+        from : 0
+    },
+    // x : {
+    //     from : 0
+    // }
   },
   layout : {
     padding : {

@@ -13,10 +13,25 @@ export const getGaugeChartOptions: GetOptions = ({ isDark }) => ({
   rotation: 260,
   animation: {
     duration: 2000,
-    easing: "easeOutQuad",
+    easing: "linear",
+    delay: 1000,
   },
-  animations : {
-    
+  animations: {
+    // ["fadeIn"]: {
+    //   properties: ["borderColor", "backgroundColor", "color"],
+    //   type: "color",
+    //   from: "transparent",
+    // },
+    ["rotate"]: {
+      properties: ["radius"],
+      type: "number",
+      from: 0,
+    },
+    // ['show'] : {
+    //     properties : [''],
+    //     type: 'boolean',
+    //     duration: 300
+    // }
   },
   layout: {
     padding: 24,
