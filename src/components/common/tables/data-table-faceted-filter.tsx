@@ -43,8 +43,6 @@ export default function DataTableFacetedFilter<TData , TValue>({
     }
   };
 
-  console.log(lowStockCount)
-
   return (
 
       <button

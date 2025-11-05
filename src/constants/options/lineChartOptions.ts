@@ -8,7 +8,7 @@ export const lineChartOptions: LineProps["options"] = {
   maintainAspectRatio: true,
   animation: {
     duration: 2000,
-    easing: "easeOutQuad",
+    easing: "easeOutCirc",
   },
   animations: {
     x: {

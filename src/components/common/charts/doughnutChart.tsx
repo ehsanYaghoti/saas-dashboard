@@ -14,9 +14,7 @@ import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 export const DoughnutChart = memo(function () {
-    const {theme} = useTheme();
-
-    console.log(theme)
+  const { theme } = useTheme();
 
   return (
     <div className="flex flex-col items-start [grid-area:d] w-auto min-h-72 bg-white dark:bg-dark-4 rounded-lg border border-slate-200 shadow-md relative">
@@ -26,8 +24,10 @@ export const DoughnutChart = memo(function () {
       <Doughnut
         data={doughnutChartData}
         options={getDoughnutChartOptions({
-          isDark: theme === "dark" || (theme === "system" &&  window.matchMedia("(prefers-color-scheme: dark)")
-            .matches),
+          isDark:
+            theme === "dark" ||
+            (theme === "system" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches),
         })}
         plugins={[lineLabelsPlugin, dashedFullArc]}
       />
@@ -39,4 +39,4 @@ export const DoughnutChart = memo(function () {
       </div>
     </div>
   );
-})
+});

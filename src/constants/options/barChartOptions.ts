@@ -11,7 +11,7 @@ export const getBarChartOptions: GetOptions = ({ isDark }) => ({
   layout: { padding: 24 },
   animation: {
     duration: 2000,
-    easing: "easeOutQuad",
+    easing: "easeOutCirc",
   },
   animations: {
     x: {

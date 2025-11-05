@@ -29,7 +29,7 @@ import {
 
 import { Suspense } from "react";
 import NavProjectsSkeleton from "@/components/loadings/skeletons/sidebarSkeleton";
-import { Logo } from "./logo";
+import { LogoIcon } from "./logoIcon";
 import { cn } from "@/lib/utils";
 import Ball from "./ball";
 import { NavLink, useLocation } from "react-router";
@@ -102,7 +102,7 @@ export function AppSidebar() {
                     "!p-0 justify-center group-data-[collapsible=icon]:p-0! group-data-[collapsible=icon]:self-center "
                 )}
               >
-                <Logo collapsed={state === "collapsed"} />
+                <LogoIcon collapsed={state === "collapsed"} />
                 <h1
                   className={`font-bold text-2xl text-primary-4 dark:text-white ${
                     state === "collapsed" && "hidden"

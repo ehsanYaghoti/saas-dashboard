@@ -55,7 +55,7 @@ export default function HeaderDynamic({
               className={`${button.style} cursor-pointer`}
             >
               {button.icon}
-              {button.title}
+              <span className=" flex  max-md:hidden " >{button.title}</span>
             </Button>
           ))}
       </div>

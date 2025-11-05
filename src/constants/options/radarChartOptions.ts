@@ -13,7 +13,7 @@ export const getRadarChartOptions: GetOptions = ({ isDark }) => ({
   },
   animation: {
     duration: 2000,
-    easing: "easeOutQuad",
+    easing: "easeOutCirc",
   },
   layout: { padding: 24 },
   // clip: {left: 5, top: 100, right: -2, bottom: 0},

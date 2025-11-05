@@ -1,6 +1,6 @@
 import { SidebarTrigger } from "../../ui/sidebar";
 
-export function Logo({collapsed} : { collapsed : boolean }) {
+export function LogoIcon({collapsed} : { collapsed : boolean }) {
   return (
     <article  className=" group" >
       <i className={`text-white  bg-gradient-to-br from-primary-1/50 to-primary-1 rounded-md !w-6 h-6 relative shadow-md flex ${collapsed ? 'group-hover:hidden' : "mr-2"}  `}>

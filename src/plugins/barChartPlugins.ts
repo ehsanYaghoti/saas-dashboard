@@ -40,7 +40,6 @@ export const progressBar: Plugin = {
       // label value
       const fontSizeDataPoint = 15;
       ctx.font = `bolder ${fontSizeLabel}px Inter`;
-      console.log("dark " + document.documentElement.className.includes('dark') )
       if(document.documentElement.className.includes('dark')){
         ctx.fillStyle = "white";
       } else {

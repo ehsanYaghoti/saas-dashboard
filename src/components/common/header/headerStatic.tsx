@@ -19,17 +19,19 @@ import {
   Settings,
   User,
 } from "lucide-react";
+import { Logo } from "./logo";
 
 export default function HeaderStatic() {
   return (
     <div className="w-full h-auto px-6 py-3 flex items-center justify-between  ">
-      <label className=" flex-grow flex items-center gap-3 max-w-[500px] ">
+      <Logo />
+      <label className=" flex-grow hidden  md:flex items-center gap-3 max-w-[500px] ">
         <Search className=" w-5 " />
         <Input
           id="search"
           name="search"
           placeholder="Search anythig here..."
-          className=" border-none shadow-none focus-visible:shadow-md focus-visible:ring-[1px] transition-all duration-500"
+          className="border-none shadow-none focus-visible:shadow-md focus-visible:ring-[1px] transition-all duration-500"
         />
       </label>
       <div className=" flex items-center divide-x ">
@@ -65,7 +67,7 @@ export default function HeaderStatic() {
               </div>
               <ChevronDown className=" w-4 cursor-pointer " />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className=" bg-white p-3 rounded-2xl border mt-5">
+            <DropdownMenuContent className=" bg-white dark:bg-dark-1 dark:text-dark-text p-3 rounded-2xl border mt-5">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Profile</DropdownMenuItem>

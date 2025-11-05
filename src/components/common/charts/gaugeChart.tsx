@@ -29,7 +29,7 @@ export function GaugeChart() {
         })}
         plugins={[textsMiddle, dashedArc]}
       />
-      <div className=" flex items-center w-full px-12 divide-x-2 divide-[#E5E9EF] ">
+      <div className=" flex items-center w-full px-12 pb-6 divide-x-2 divide-[#E5E9EF] ">
         <div
           className=" flex flex-col items-start gap-1 relative w-1/2
              before:content-[''] before:h-12 before:absolute before:left-[-15px] before:top-[5px] before:w-[4px] before:rounded-full before:bg-primary-1

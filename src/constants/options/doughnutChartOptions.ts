@@ -8,7 +8,7 @@ export const getDoughnutChartOptions : GetOptions = ({isDark}) => ({
   maintainAspectRatio: true,
     animation : {
       duration : 2000,
-      easing : "easeOutQuad",
+      easing : "easeOutCirc",
       animateRotate : true,
       animateScale : false
     },

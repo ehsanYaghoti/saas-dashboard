@@ -13,7 +13,7 @@ export const getGaugeChartOptions: GetOptions = ({ isDark }) => ({
   rotation: 260,
   animation: {
     duration: 2000,
-    easing: "easeOutQuad",
+    easing: "easeOutCirc",
   },
   layout: {
     padding: 24,
