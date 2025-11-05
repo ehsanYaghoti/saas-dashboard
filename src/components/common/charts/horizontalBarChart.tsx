@@ -15,7 +15,7 @@ import { imageLabels, progressBar } from "@/plugins/barChartPlugins";
 import { Button } from "@/components/ui/button";
 import { Ellipsis } from "lucide-react";
 import { useTheme } from "@/components/theme/theme-provider";
-import { useCallback, useMemo } from "react";
+import { memo } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -27,23 +27,19 @@ ChartJS.register(
   Legend
 );
 
-export function HorizontalBarChart() {
+export const HorizontalBarChart = memo(function () {
   const { theme } = useTheme();
-
-  const getBarChartOptionsProp = useMemo(() => {
-
-        return getBarChartOptions({
-          isDark:
-            theme === "dark" ||
-            (theme === "system" &&
-              window.matchMedia("(prefers-color-scheme: dark)").matches),
-        })}  , [theme])
 
   return (
     <div className="flex flex-col items-start [grid-area:b] bg-white dark:bg-dark-4  rounded-lg border border-slate-200 shadow-md relative">
       <Bar
         id="myChartHorizontalBar"
-        options={getBarChartOptionsProp}
+        options={getBarChartOptions({
+          isDark:
+            theme === "dark" ||
+            (theme === "system" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches),
+        })}
         data={barChartdata}
         plugins={[imageLabels, progressBar]}
       />
@@ -54,4 +50,4 @@ export function HorizontalBarChart() {
       </div>
     </div>
   );
-}
+})

@@ -10,7 +10,6 @@ import {
   TimeScale,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import annotationPlugin from "chartjs-plugin-annotation";
 
 import "chartjs-adapter-date-fns";
 import { lineChartOptions } from "@/constants/options/lineChartOptions";

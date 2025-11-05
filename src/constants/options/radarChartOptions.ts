@@ -12,20 +12,8 @@ export const getRadarChartOptions: GetOptions = ({ isDark }) => ({
     intersect: false,
   },
   animation: {
-    duration: 3000,
+    duration: 2000,
     easing: "easeOutQuad",
-    // onProgress: function (animation) {
-    //   //   progress.value = animation.currentStep / animation.numSteps;
-    //   console.log(animation);
-    // },
-  },
-  animations: {
-    ["fadeIn"]: {
-      properties: ['borderColor' , 'backgroundColor' ,'color' , 'gridColor'],
-      type: 'color',
-      from: 'transparent',
-    },
-    ['show'] : { type: 'boolean', duration: 300 }
   },
   layout: { padding: 24 },
   // clip: {left: 5, top: 100, right: -2, bottom: 0},

@@ -1,6 +1,7 @@
+import { useTheme } from "@/components/theme/theme-provider";
 import { Button } from "@/components/ui/button";
 import { doughnutChartData } from "@/constants/data/doughnutChartData";
-import { doughnutChartOptions } from "@/constants/options/doughnutChartOptions";
+import { getDoughnutChartOptions } from "@/constants/options/doughnutChartOptions";
 import {
   dashedFullArc,
   lineLabelsPlugin,
@@ -13,6 +14,10 @@ import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 export const DoughnutChart = memo(function () {
+    const {theme} = useTheme();
+
+    console.log(theme)
+
   return (
     <div className="flex flex-col items-start [grid-area:d] w-auto min-h-72 bg-white dark:bg-dark-4 rounded-lg border border-slate-200 shadow-md relative">
       <h3 className="flex text-lg font-extrabold text-shadow-black p-6  text-slate-700 dark:text-dark-text mb-0">
@@ -20,7 +25,10 @@ export const DoughnutChart = memo(function () {
       </h3>
       <Doughnut
         data={doughnutChartData}
-        options={doughnutChartOptions}
+        options={getDoughnutChartOptions({
+          isDark: theme === "dark" || (theme === "system" &&  window.matchMedia("(prefers-color-scheme: dark)")
+            .matches),
+        })}
         plugins={[lineLabelsPlugin, dashedFullArc]}
       />
 

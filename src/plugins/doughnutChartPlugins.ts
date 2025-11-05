@@ -188,10 +188,11 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
         if (checkTheme()) {
             // console.log("update")
           ctx.fillStyle = "white";
-          ctx.shadowColor = "rgba(0,0,0,0.5)";
         } else {
           ctx.fillStyle = "rgba(0,0,0,0.5)";
         }
+
+        ctx.shadowColor = "rgba(0,0,0,0.1)";
         ctx.shadowOffsetX = 3;
         ctx.shadowOffsetY = 3;
         ctx.shadowBlur = 6;
@@ -202,9 +203,9 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
           ctx.fillStyle = "rgba(0,0,0,0.7)";
         }
         ctx.font = "800 14px Inter";
-        if (checkTheme()) {
-            ctx.shadowColor = "rgba(0,0,0,0.7)";
-        }
+        // if (checkTheme()) {
+        //     ctx.shadowColor = "rgba(0,0,0,0.7)";
+        // }
         ctx.shadowOffsetX = 3;
         ctx.shadowOffsetY = 3;
         ctx.shadowBlur = 6;

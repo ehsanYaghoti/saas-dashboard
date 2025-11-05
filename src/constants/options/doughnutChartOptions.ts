@@ -1,49 +1,36 @@
 import type { DoughnutProps } from "@/types/chart";
 import { titleTypography } from "../charts";
-import { checkTheme } from "@/utils";
 
+type GetOptions = ({ isDark }: { isDark: boolean }) => DoughnutProps["options"];
 
-export const doughnutChartOptions: DoughnutProps["options"] = {
-  responsive : true,
-  maintainAspectRatio : true,
-  animation : {
-    duration : 2000,
-    easing : "easeOutQuad",
-    animateRotate : true,
-    animateScale : true
-  },
-  transitions : {
-    show : {
-        animations : {
-            
-        }
-    }
-  },
-  animations: {
-    // ["fadeIn"]: {
-    //   properties: ['borderColor' , 'backgroundColor' ,'color'],
-    //   type: 'color',
-    //   from: 'transparent',
-    // },
-    ['show'] : {
-        properties : ['x', 'y', 'borderWidth', 'radius', 'tension'],
-        type: 'number',
-        from : 0
+export const getDoughnutChartOptions : GetOptions = ({isDark}) => ({
+  responsive: true,
+  maintainAspectRatio: true,
+    animation : {
+      duration : 2000,
+      easing : "easeOutQuad",
+      animateRotate : true,
+      animateScale : false
     },
-    // x : {
-    //     from : 0
-    // }
-  },
-  layout : {
-    padding : {
-        top : 10,
-        bottom : 40,
-        left : 55,
-        right : 55
+//   animations: {
+//     radius: {
+//       duration: 1000,
+//       easing: "easeOutElastic",
+//       from: 0,
+//       to: 120,
+//       loop: false,
+//     },
+//   },
+  layout: {
+    padding: {
+      top: 10,
+      bottom: 40,
+      left: 55,
+      right: 55,
     },
   },
-  cutout : "65%",
-  radius : "90%",
+  cutout: "65%",
+  radius: "90%",
   plugins: {
     legend: {
       position: "top" as const,
@@ -52,15 +39,15 @@ export const doughnutChartOptions: DoughnutProps["options"] = {
     title: {
       display: false,
       fullSize: true,
-      color : checkTheme() ? "white" : "rgba(0,0,0,0.7)",
+      color: isDark ? "white" : "rgba(0,0,0,0.7)",
       text: "Sales by e-commerce platform",
       padding: {
         bottom: 10,
       },
       ...titleTypography,
     },
-    tooltip : {
-        usePointStyle : true,
-    }
+    tooltip: {
+      usePointStyle: true,
+    },
   },
-};
+});

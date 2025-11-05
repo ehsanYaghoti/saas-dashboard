@@ -20,7 +20,7 @@ export const dashedArc: DoughnutProps["plugin"] = {
     ctx.beginPath();
     ctx.arc(
       left + width / 2,
-      bottom - height / 3 + 5,
+      bottom - height / 3 + 10,
       (width + height) / 5 + 30,
       degreeToRadian(10),
       degreeToRadian(170),
@@ -38,7 +38,7 @@ export const dashedArc: DoughnutProps["plugin"] = {
     ctx.beginPath();
     ctx.arc(
       left + width / 2,
-      bottom - height / 2 + 62,
+      bottom - height / 2 + 55,
       (width + height) / 5 + 16,
       degreeToRadian(10),
       degreeToRadian(170),
@@ -92,7 +92,7 @@ export const textsMiddle: DoughnutProps["plugin"] = {
       ctx.fillStyle = "rgba(0,0,0,0.7)";
     }
     ctx.fillText(
-      `${sum}`.replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+      `${sum.toLocaleString()}`,
       width / 2 + 25,
       bottom - 100
     );

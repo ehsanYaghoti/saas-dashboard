@@ -1,9 +1,6 @@
 import type { LineProps } from "@/types/chart";
 import { titleTypography } from "../charts";
 import { checkTheme } from "@/utils";
-// import type { ScriptableContext } from "chart.js";
-
-
 
 export const lineChartOptions: LineProps["options"] = {
   responsive: true,
@@ -17,9 +14,6 @@ export const lineChartOptions: LineProps["options"] = {
     x: {
       from: 0,
     },
-    // y: {
-    //   from: 0,
-    // },
   },
   transitions: {
     show: {
