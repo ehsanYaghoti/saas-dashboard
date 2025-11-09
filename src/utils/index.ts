@@ -10,7 +10,6 @@ export function getWindowsWidth() {
   let width = window.innerWidth;
   let widthString = "";
 
-  console.log(width);
   switch (true) {
     case width <= 320:
       return (widthString = "xxs");
@@ -20,7 +19,7 @@ export function getWindowsWidth() {
       return (widthString = "sm");
     case width <= 768 && 425 < width:
       return (widthString = "md");
-    case width <= 1024 && 768 < width:
+    case (width <= 1024 || width <= 1025) && 768 < width:
       return (widthString = "lg");
     case width <= 1440 && 1024 < width:
       return (widthString = "xl");

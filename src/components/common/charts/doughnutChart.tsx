@@ -17,7 +17,7 @@ export const DoughnutChart = memo(function () {
   const { theme } = useTheme();
 
   return (
-    <div className="flex flex-col items-start  [grid-area:d] w-auto min-h-72 md:min-h-[425px] bg-white dark:bg-dark-4 rounded-lg border border-slate-200 shadow-md relative">
+    <div className="flex flex-col items-start pb-4  [grid-area:d] w-auto min-h-72 md:min-h-[425px] bg-white dark:bg-dark-4 rounded-lg border border-slate-200 shadow-md relative">
       <h3 className="flex text-lg font-extrabold text-shadow-black p-6  text-slate-700 dark:text-dark-text mb-0">
         Sales by e-commerce platform
       </h3>

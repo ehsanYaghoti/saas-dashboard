@@ -220,11 +220,13 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
         }
         ctx.font = "800 14px Inter";
         // if (checkTheme()) {
-        //     ctx.shadowColor = "rgba(0,0,0,0.7)";
+        //     ctx.shadowColor = "rgba(0,0,0,0.6)";
+        // } else {
+        //     ctx.shadowColor = "transparent"
         // }
-        ctx.shadowOffsetX = 3;
-        ctx.shadowOffsetY = 3;
-        ctx.shadowBlur = 6;
+        // ctx.shadowOffsetX = 3;
+        // ctx.shadowOffsetY = 3;
+        // ctx.shadowBlur = 8;
         ctx.fillText(`${dataLabel}%`, xLine + xStraightLine, yLine + 40);
       });
     });
