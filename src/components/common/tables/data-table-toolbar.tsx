@@ -17,11 +17,12 @@ export default function DataTableToolbar<TData>({
 
   return (
     <div className="bg-white dark:bg-dark-1 dark:text-dark-text">
-      <div className="  flex items-center justify-between border dark:border-white px-4  overflow-visible h-16 z-10 ">
+
+      <div className="flex flex-col gap-5 py-3 md:flex-row items-center justify-between border dark:border-white px-4  md:overflow-visible min-h-16 h-fit z-10 ">
         <div
           className="
-            h-full flex  items-center gap-6
-            font-[600] text-base text-slate-400 dark:text-dark-text
+            md:h-full flex overflow-x-auto overflow-y-hidden w-full  items-center gap-1 md:gap-6
+            font-[500] md:font-[600] text-xs md:text-base text-slate-400 dark:text-dark-text
         "
         >
           <DataTableFacetedFilter

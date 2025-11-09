@@ -54,16 +54,16 @@ export default function DataTableFacetedFilter<TData , TValue>({
               tabIndex === options.tabIndexProp &&
               "text-primary-1 after:h-[3px]  after:content-['']"
             }
-            after:w-full after:absolute after:bg-primary-1
+            after:w-full after:absolute after:bg-primary-1 text-nowrap
             after:rounded-full after:-bottom-[1px] after:left-0
-            hover:bg-green-50 dark:hover:bg-dark-2  cursor-pointer px-2 h-full
+            hover:bg-green-50 dark:hover:bg-dark-2  cursor-pointer py-2 px-2 h-full
         `}
         onClick={(e) =>
           filterFacetingHandler(e)
         }
       >
         {title}
-        <span className="ml-auto flex size-4 items-center justify-center font-mono text-sm bg-green-100 rounded-full p-3 text-primary-1">
+        <span className="ml-auto hidden md:flex size-4 items-center justify-center font-mono md:text-sm bg-green-100 rounded-full p-3 text-primary-1">
           {options.tabIndexProp === 0 ? productsTableData.length : options.tabIndexProp === 4 ? lowStockCount : column?.getFacetedUniqueValues().get(options.valueProp) ? column?.getFacetedUniqueValues().get(options.valueProp) : 0}
         </span>
       </button>

@@ -5,7 +5,7 @@ import { DataTable } from "./data-table";
 export default function Table() {
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container py-10">
       <DataTable columns={columns} data={productsTableData} />
     </div>
   );

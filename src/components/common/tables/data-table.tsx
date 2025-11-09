@@ -70,8 +70,8 @@ export function DataTable<TData, TValue>({
     <div className="flex flex-col dark:text-white">
 
       <div className="flex items-center gap-2 bg-[#F5F7F9] p-4 rounded-t-md  border border-b-0 text-slate-500 dark:text-dark-text dark:border-white  dark:bg-dark-2 ">
-        <span className=" w-6 h-6 rounded-full bg-[#3CBEA9] border-[rgba(0,0,0,0.75)] border-1 shadow-[2px_0px_0px_0px_rgba(0,0,0,0.75)] "></span>
-        <p className="text-base font-base ">
+        <span className=" w-6 h-6 rounded-full shrink-0 bg-[#3CBEA9] border-[rgba(0,0,0,0.75)] border-1 shadow-[2px_0px_0px_0px_rgba(0,0,0,0.75)] "></span>
+        <p className=" text-sm md:text-base font-base ">
           This dataTable show all of your product
         </p>
       </div>
