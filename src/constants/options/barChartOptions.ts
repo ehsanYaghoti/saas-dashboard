@@ -1,4 +1,5 @@
 import type { BarProps } from "@/types/chart";
+// import { getWindowsWidth } from "@/utils";
 // import { titleTypography } from "../charts";
 // import { checkTheme } from "@/utils";
 
@@ -8,7 +9,7 @@ export const getBarChartOptions: GetOptions = ({ isDark }) => ({
   responsive: true,
   aspectRatio: 1,
   maintainAspectRatio: true,
-  layout: { padding: 24 },
+  layout: { padding: { top : 24 , bottom : 0 , right : 24  , left : 24   } },
   animation: {
     duration: 2000,
     easing: "easeOutCirc",

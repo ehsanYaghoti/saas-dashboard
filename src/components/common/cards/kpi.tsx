@@ -17,7 +17,7 @@ export default function KpiCard({
   description,
 }: KpiCardType) {
   return (
-    <section className=" w-full md:w-[calc(50%-32px)] lg:w-[calc(25%-32px)] h-auto p-3  bg-white text-slate-400 dark:bg-dark-4 dark:text-dark-text border border-slate-200 shadow rounded-lg flex flex-col items-start">
+    <section className=" w-full md:w-[calc(50%-32px)] lg:w-[calc(25%-8px)] xl:w-[calc(25%-32px)] h-auto p-3  bg-white text-slate-400 dark:bg-dark-4 dark:text-dark-text border border-slate-200 shadow rounded-lg flex flex-col items-start">
       <h3 className=" text-base  mb-4 ">{title}</h3>
       <span className=" text-xl text-slate-800 dark:text-dark-text font-bold mb-3">
         {amount}

@@ -19,7 +19,7 @@ const buttonsList: buttonsListType = [
   {
     title: "Add Product",
     icon: <Plus />,
-    style: "bg-primary-1 text-white",
+    style: " bg-primary-1 dark:bg-primary-1 text-white",
   },
 ];
 
@@ -37,7 +37,7 @@ export default function HeaderDynamic({
       <h2 className=" text-2xl font-bold text-slate-700  dark:text-white flex items-center gap-2">
         {title}
         {title === "Products" && (
-          <span className="text-xs px-2 py-[2px] rounded-full bg-[#E5F0EF] text-primary-1 text-shadow-lg text-shadow-white ">
+          <span className="md:flex hidden text-xs px-2 py-[2px] rounded-full bg-[#E5F0EF] text-primary-1 text-shadow-lg text-shadow-white ">
             {productsCount?.toLocaleString()}
           </span>
         )}

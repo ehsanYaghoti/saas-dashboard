@@ -10,7 +10,7 @@ const getOrCreateLegendList = (chart: Chart, id: string) => {
     listContainer.style.display = "flex";
     listContainer.style.flexDirection = "row";
     listContainer.style.alignItems = "center";
-    listContainer.style.gap = "25px";
+    listContainer.classList.add("gap-[5px]" , "md:gap-[25px]");
     listContainer.style.margin = "10px 0";
     listContainer.style.padding = "0";
 
@@ -71,6 +71,7 @@ export const htmlLegendPlugin: Plugin<"line"> = {
       const textsSection = document.createElement("div");
       textsSection.style.display = "flex";
       textsSection.style.flexDirection = "column";
+      textsSection.classList.add("text-xs" , "md:text-base");
       textsSection.style.fontWeight = "600";
 
       // Label title

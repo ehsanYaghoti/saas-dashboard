@@ -1,5 +1,6 @@
 import type { RadarProps } from "@/types/chart";
 import { primaryColor } from "../charts";
+import { getWindowsWidth } from "@/utils";
 // import { checkTheme } from "@/utils";
 
 type GetOptions = ({ isDark }: { isDark: boolean }) => RadarProps["options"];
@@ -15,7 +16,7 @@ export const getRadarChartOptions: GetOptions = ({ isDark }) => ({
     duration: 2000,
     easing: "easeOutCirc",
   },
-  layout: { padding: 24 },
+  layout: { padding: getWindowsWidth() === "xxs" ? { top : 24 , left : 16 , right : 16 , bottom : 16 } : 24 },
   // clip: {left: 5, top: 100, right: -2, bottom: 0},
   scales: {
     r: {

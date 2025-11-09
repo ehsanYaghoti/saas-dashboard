@@ -31,7 +31,7 @@ export const HorizontalBarChart = memo(function () {
   const { theme } = useTheme();
 
   return (
-    <div className="flex flex-col items-start [grid-area:b] bg-white dark:bg-dark-4  rounded-lg border border-slate-200 shadow-md relative">
+    <div className="flex flex-col items-start md:min-h-[350px] [grid-area:b] bg-white dark:bg-dark-4  rounded-lg border border-slate-200 shadow-md relative">
       <Bar
         id="myChartHorizontalBar"
         options={getBarChartOptions({

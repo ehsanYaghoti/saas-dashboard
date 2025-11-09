@@ -1,5 +1,6 @@
 import type { DoughnutProps } from "@/types/chart";
 import { titleTypography } from "../charts";
+// import { getWindowsWidth } from "@/utils";
 
 type GetOptions = ({ isDark }: { isDark: boolean }) => DoughnutProps["options"];
 
@@ -24,7 +25,7 @@ export const getDoughnutChartOptions : GetOptions = ({isDark}) => ({
   layout: {
     padding: {
       top: 10,
-      bottom: 40,
+      bottom: 43,
       left: 55,
       right: 55,
     },

@@ -1,7 +1,59 @@
 import type { DoughnutProps } from "@/types/chart";
 import UsersImg from "@/assets/charts/users.svg";
 import { degreeToRadian } from "@/utils/charts";
-import { checkTheme } from "@/utils";
+import { checkTheme, getWindowsWidth } from "@/utils";
+
+type GetCoordinateY = (
+  bottom: number,
+  height?: number
+) => { lineArcY: number; imgY: number; numY: number; textY: number };
+
+const getCoordinateY: GetCoordinateY = (bottom, height) => {
+  const width = getWindowsWidth();
+  if (width == "xxl") {
+    return {
+      lineArcY: bottom - (height as number) / 2 + 55,
+      imgY: bottom - 185,
+      numY: bottom - 100,
+      textY: bottom - 70,
+    };
+  } else if (width == "xxs") {
+    return {
+      lineArcY: bottom - (height as number) / 2 + 40,
+      imgY: bottom - 125,
+      numY: bottom - 50,
+      textY: bottom - 20,
+    };
+  } else if (width === "xs" || width === "lg") {
+    return {
+      lineArcY: bottom - (height as number) / 2 + 50,
+      imgY: bottom - 150,
+      numY: bottom - 65,
+      textY: bottom - 30,
+    };
+  } else if (width === "sm" ) {
+    return {
+      lineArcY: bottom - (height as number) / 2 + 60,
+      imgY: bottom - 150,
+      numY: bottom - 65,
+      textY: bottom - 30,
+    };
+  } else if (width === "md" ) {
+    return {
+      lineArcY: bottom - (height as number) / 2 + 46,
+      imgY: bottom - 150,
+      numY: bottom - 65,
+      textY: bottom - 30,
+    };
+  } else {
+    return {
+      lineArcY: bottom - (height as number) / 2,
+      imgY: bottom - 185,
+      numY: bottom - 100,
+      textY: bottom - 70,
+    };
+  }
+};
 
 export const dashedArc: DoughnutProps["plugin"] = {
   id: "dashedArc",
@@ -14,10 +66,34 @@ export const dashedArc: DoughnutProps["plugin"] = {
     // console.log(options.scales)
     ctx.save();
 
+    // const arcs = chart.getDatasetMeta(0).data as ArcElement[];
+    // const points : {x : number , y : number}[] = [];
+
+    // arcs.forEach((arc) => {
+    //   const { x, y, outerRadius, startAngle, endAngle } = arc;
+
+    //   const topAngle = (startAngle + endAngle) / 2; // midpoint angle of arc
+    //   const topX = x + Math.cos(topAngle - Math.PI / 2) * outerRadius;
+    //   const topY = y + Math.sin(topAngle - Math.PI / 2) * outerRadius;
+    //   points.push({ x: topX, y: topY });
+    // });
+
+    // const topmost = points.reduce((a, b) => (a.y < b.y ? a : b));
+    // console.log("Topmost point:", topmost);
+
     // dashed arc
     ctx.setLineDash([2, 2]);
 
     ctx.beginPath();
+    // ctx.arc(
+    //   left + width / 2,
+    //   bottom - height / 3 + 10,
+    //   (width + height) / 5 + 30,
+    //   degreeToRadian(10),
+    //   degreeToRadian(170),
+    //   true
+    // );
+
     ctx.arc(
       left + width / 2,
       bottom - height / 3 + 10,
@@ -38,7 +114,7 @@ export const dashedArc: DoughnutProps["plugin"] = {
     ctx.beginPath();
     ctx.arc(
       left + width / 2,
-      bottom - height / 2 + 55,
+      bottom - height / 3 + 10,
       (width + height) / 5 + 16,
       degreeToRadian(10),
       degreeToRadian(170),
@@ -71,9 +147,8 @@ export const textsMiddle: DoughnutProps["plugin"] = {
     ctx.save();
 
     // img
-
     if (img.complete) {
-      ctx.drawImage(img, width / 2 - 10, bottom - 185, 60, 60);
+      ctx.drawImage(img, width / 2 - 10, getCoordinateY(bottom).imgY, 60, 60);
     } else {
       img.onload = () => chart.draw();
     }
@@ -94,7 +169,7 @@ export const textsMiddle: DoughnutProps["plugin"] = {
     ctx.fillText(
       `${sum.toLocaleString()}`,
       width / 2 + 25,
-      bottom - 100
+      getCoordinateY(bottom).numY
     );
 
     ctx.font = "14px Inter";
@@ -103,6 +178,6 @@ export const textsMiddle: DoughnutProps["plugin"] = {
     } else {
       ctx.fillStyle = "rgba(0,0,0,0.4)";
     }
-    ctx.fillText("Total Users", width / 2 + 25, bottom - 70);
+    ctx.fillText("Total Users", width / 2 + 25, getCoordinateY(bottom).textY);
   },
 };

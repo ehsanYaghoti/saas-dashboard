@@ -1,10 +1,10 @@
 import type { LineProps } from "@/types/chart";
 import { titleTypography } from "../charts";
-import { checkTheme } from "@/utils";
+import { checkTheme, getWindowsWidth } from "@/utils";
 
 export const lineChartOptions: LineProps["options"] = {
   responsive: true,
-  aspectRatio: 3,
+  aspectRatio:  getWindowsWidth() === 'xxs' ? 1 : 3,
   maintainAspectRatio: true,
   animation: {
     duration: 2000,
@@ -38,7 +38,7 @@ export const lineChartOptions: LineProps["options"] = {
     },
   },
   layout: {
-    padding: 24,
+    padding: getWindowsWidth() === 'xxs' ? 4 : 24,
   },
   interaction: {
     mode: "index",

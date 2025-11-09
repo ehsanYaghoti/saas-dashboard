@@ -16,7 +16,7 @@ export function getWindowsWidth() {
       return (widthString = "xxs");
     case width <= 375 && 320 < width:
       return (widthString = "xs");
-    case width <= 425 && 375 < width:
+    case (width <= 425 || width <= 426) && 375 < width:
       return (widthString = "sm");
     case width <= 768 && 425 < width:
       return (widthString = "md");
@@ -27,7 +27,7 @@ export function getWindowsWidth() {
     case 1440 <= width && width < 2560:
       return (widthString = "xxl");
     case 2560 <= width:
-      return (widthString = "xxl");
+      return (widthString = "xxxl");
     default:
       widthString = "xl";
       break;

@@ -33,6 +33,9 @@ import { LogoIcon } from "./logoIcon";
 import { cn } from "@/lib/utils";
 import Ball from "./ball";
 import { NavLink, useLocation } from "react-router";
+import SearchInput from "../header/search";
+import ToolbarAndTheme from "../header/toolbarAndTheme";
+import UserMenu from "../header/userMenu";
 
 // Menu items.
 const items_1 = [
@@ -104,8 +107,8 @@ export function AppSidebar() {
               >
                 <LogoIcon collapsed={state === "collapsed"} />
                 <h1
-                  className={`font-bold text-2xl text-primary-4 dark:text-white ${
-                    state === "collapsed" && "hidden"
+                  className={`font-bold py-1 text-2xl text-primary-4 dark:text-white relative opacity-100 transition-all ${
+                    state === "collapsed" && " hidden "
                   } `}
                 >
                   Consist
@@ -115,6 +118,16 @@ export function AppSidebar() {
                 />
               </div>
             </SidebarMenuItem>
+            <SidebarSeparator  className=" mx-1   data-[orientation=horizontal]:w-auto " />
+            <SidebarMenuItem className="md:hidden" >
+                <SearchInput sidebar={true} />
+            </SidebarMenuItem>
+            <SidebarMenuItem className=" w-full md:hidden flex items-center divide-x  " >
+                <ToolbarAndTheme sidebar={true} />
+                <UserMenu sidebar={true} />
+
+            </SidebarMenuItem>
+            <SidebarSeparator  className=" mx-1 md:hidden data-[orientation=horizontal]:w-auto " />
           </SidebarMenu>
         </SidebarHeader>
         <SidebarContent>
@@ -168,7 +181,7 @@ export function AppSidebar() {
           <SidebarMenu>
             {/* <SidebarMenuItem> */}
             <SidebarMenuItem
-              className="group-data-[collapsible=icon]:hidden w-full h-[160px] p-4 rounded-md bg-primary-1
+              className="group-data-[collapsible=icon]:hidden w-full h-[150px] md:h-[160px] p-4 rounded-md bg-primary-1
                     relative flex flex-col items-start justify-end gap-3 shadow-2xs shadow-primary-1
                     after:content-[''] after:absolute after:w-44 after:h-44 after:border-2 after:border-black/30 after:rounded-full after:left-[30%] after:-top-[70%]
                     before:content-[''] before:absolute before:w-44 before:h-44 before:border-2 before:border-black/30 before:rounded-full before:left-[80%] before:-top-[45px]
@@ -176,11 +189,11 @@ export function AppSidebar() {
                 "
             >
               <Ball />
-              <p className=" text-white text-sm   ">
+              <p className=" text-white text-xs md:text-sm   ">
                 Get detailed analitycs to help you, upgrade pro
               </p>
               {/* <a href="#" className=" "> */}
-              <button className=" bg-white !cursor-pointer hover:bg-primary-1 hover:text-white border border-transparent hover:border-white  rounded-[10px] text-sm text-primary-1 px-2 py-1 ">
+              <button className=" bg-white !cursor-pointer hover:bg-primary-1 hover:text-white border border-transparent hover:border-white  rounded-[9px] text-sm text-primary-1 px-2 py-1 ">
                 Upgrade Now
               </button>
               {/* </a> */}

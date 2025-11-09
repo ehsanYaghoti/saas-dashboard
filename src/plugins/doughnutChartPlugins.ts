@@ -3,8 +3,22 @@ import img1 from "@/assets/charts/tokopedia.svg";
 import img2 from "@/assets/charts/alibaba.svg";
 import img3 from "@/assets/charts/amazon.svg";
 import { degreeToRadian } from "@/utils/charts";
-// import { img } from "./gaugeChartPlugins";
-import { checkTheme } from "@/utils";
+import { checkTheme, getWindowsWidth } from "@/utils";
+// import type { ArcElement } from "chart.js";
+
+const plusNum = () => {
+  const width = getWindowsWidth();
+
+  if (width == "xxl") {
+    return { x : 40 , y : 60}
+  } else if (width == "xxs") {
+    return { x : 28 , y : 70}
+  } else if (width == "md") {
+    return { x : 28 , y : 60}
+  } else {
+    return { x : 40 , y : 60}
+  }
+};
 
 export const dashedFullArc: DoughnutProps["plugin"] = {
   id: "dashedFullArc",
@@ -75,7 +89,7 @@ export const dashedFullArc: DoughnutProps["plugin"] = {
     ctx.arc(
       left + width / 2,
       bottom - height / 2,
-      (width + height) / 5 + 35,
+      (width + height) / 5 + 30,
       degreeToRadian(0),
       degreeToRadian(360),
       true
@@ -93,6 +107,8 @@ let images: HTMLImageElement[] = [img1, img2, img3].map((image) => {
   img.src = image;
   return img;
 });
+
+
 
 export const lineLabelsPlugin: DoughnutProps["plugin"] = {
   id: "lineLabelsPlugin",
@@ -119,7 +135,7 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
 
         // square box
 
-        const angle = 45 * (Math.PI / 180); // 45 degrees in radians
+        const angle = 45 * (Math.PI / 180);
 
         ctx.save();
         ctx.translate(x, y);
@@ -133,8 +149,8 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
         ctx.restore();
 
         // label and data positions
-        const xLine = x >= halfWidth ? x + 40 : x - 40;
-        const yLine = y >= halfHeight ? y + 60 : y - 60;
+        const xLine = x >= halfWidth ? x + plusNum().x : x - plusNum().x;
+        const yLine = y >= halfHeight ? y + plusNum().y : y - plusNum().y;
         const xStraightLine = x >= halfWidth ? 10 : -10;
         // console.log( y )
         // console.log(height)
@@ -147,10 +163,10 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
         ctx.lineWidth = 2;
         ctx.lineTo(xLine, yLine);
         ctx.lineTo(xLine + xStraightLine, yLine);
-        if(checkTheme()){
-            ctx.strokeStyle = "white";
+        if (checkTheme()) {
+          ctx.strokeStyle = "white";
         } else {
-            ctx.strokeStyle = lineColor;
+          ctx.strokeStyle = lineColor;
         }
         ctx.stroke();
 
@@ -186,7 +202,7 @@ export const lineLabelsPlugin: DoughnutProps["plugin"] = {
         ctx.textBaseline = "middle";
 
         if (checkTheme()) {
-            // console.log("update")
+          // console.log("update")
           ctx.fillStyle = "white";
         } else {
           ctx.fillStyle = "rgba(0,0,0,0.5)";
