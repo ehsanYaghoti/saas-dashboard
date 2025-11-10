@@ -1,3 +1,4 @@
+import type { Table } from "@tanstack/react-table";
 import type { JSX } from "react";
 
 export type buttonsListType = {
@@ -16,3 +17,8 @@ export type Products = {
   rating: number;
   status: boolean;
 };
+
+
+export interface TableProps<TData> {
+  table: Table<TData>;
+}
