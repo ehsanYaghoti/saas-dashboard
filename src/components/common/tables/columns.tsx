@@ -51,7 +51,7 @@ export const columns: ColumnDef<Products>[] = [
     },
     cell: ({ row }) => {
       return (
-        <div className="flex items-center gap-2 min-w-[75px] w-fit px-2">
+        <div className="flex items-center gap-2 min-w-[200px] px-2">
           <img
             src={img}
             alt="productImage"

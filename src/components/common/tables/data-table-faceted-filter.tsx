@@ -55,7 +55,7 @@ export default function DataTableFacetedFilter<TData , TValue>({
               "text-primary-1 after:h-[3px]  after:content-['']"
             }
             after:w-full after:absolute after:bg-primary-1 text-nowrap
-            after:rounded-full after:-bottom-[1px] after:left-0
+            after:rounded-full after:-bottom-[0px] after:left-0 after:z-30
             hover:bg-green-50 dark:hover:bg-dark-2  cursor-pointer py-2 px-2 h-full
         `}
         onClick={(e) =>

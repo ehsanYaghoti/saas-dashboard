@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 
 export default function FilterSearch<TData>({ table }: TableProps<TData>) {
   return (
-    <div className="flex items-center p-4 border-x dark:border-white relative">
+    <div className="flex items-center p-4 border border-b-0 z-0 dark:border-white relative">
       <Input
         placeholder="Search products..."
         value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}

@@ -10,9 +10,10 @@ export default function FilterTabs<TData>({ table }: TableProps<TData>) {
   return (
     <div
       className="
-            md:h-full hidden md:flex overflow-x-auto overflow-y-hidden w-full  items-center gap-1 md:gap-6
-            font-[500] md:font-[600] text-xs md:text-base text-slate-400 dark:text-dark-text
+            lg:h-full hidden lg:flex overflow-x-auto overflow-y-hidden grow  items-center gap-1 lg:gap-6
+            font-[600] text-base text-slate-400 dark:text-dark-text z-20
         "
+        style={{scrollbarWidth : 'none'}}
     >
       <DataTableFacetedFilter
         table={table}
