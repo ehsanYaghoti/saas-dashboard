@@ -17,6 +17,7 @@ import { lineChartData } from "@/constants/data/lineChartData";
 import { htmlLegendPlugin, verticalHoverLine } from "@/plugins/chartsPlugins";
 import { Button } from "@/components/ui/button";
 import { Download, Ellipsis } from "lucide-react";
+import { memo } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -30,7 +31,7 @@ ChartJS.register(
 );
 
 
-export function ChartLine() {
+export const ChartLine = memo(function () {
 
   return (
     <div className="flex flex-col [grid-area:a]  bg-white dark:bg-dark-4 rounded-lg border  border-slate-200 shadow-md relative ">
@@ -53,4 +54,4 @@ export function ChartLine() {
       </div>
     </div>
   );
-}
+})

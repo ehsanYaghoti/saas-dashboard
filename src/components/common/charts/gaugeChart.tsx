@@ -12,11 +12,12 @@ import {
   SubTitle,
 } from "chart.js";
 import { Ellipsis } from "lucide-react";
+import { memo } from "react";
 import { Doughnut } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title, SubTitle);
 
-export function GaugeChart() {
+export const GaugeChart =  memo(function() {
   const { theme } = useTheme();
 
   return (
@@ -62,4 +63,4 @@ export function GaugeChart() {
       </div>
     </div>
   );
-}
+})

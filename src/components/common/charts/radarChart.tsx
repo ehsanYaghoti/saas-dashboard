@@ -24,8 +24,9 @@ import { radarTickLabels } from "@/plugins/radarChartPlugins";
 import { Button } from "@/components/ui/button";
 import { Ellipsis } from "lucide-react";
 import { useTheme } from "@/components/theme/theme-provider";
+import { memo } from "react";
 
-export default function RadarChart() {
+const RadarChart = memo(function() {
   const { theme } = useTheme();
 
   return (
@@ -48,4 +49,6 @@ export default function RadarChart() {
       </div>
     </div>
   );
-}
+})
+
+export default RadarChart;
