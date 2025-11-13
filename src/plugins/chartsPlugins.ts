@@ -1,7 +1,7 @@
 import { checkTheme } from "@/utils";
 import type { Chart, LegendItem, Plugin } from "chart.js";
 
-const getOrCreateLegendList = (chart: Chart, id: string) => {
+const getOrCreateLegendList = (id: string) => {
   const legendContainer = document.getElementById(id);
   let listContainer = legendContainer?.querySelector("ul");
 
@@ -22,8 +22,9 @@ const getOrCreateLegendList = (chart: Chart, id: string) => {
 
 export const htmlLegendPlugin: Plugin<"line"> = {
   id: "htmlLegend",
-  afterUpdate(chart: any, args: any, options) {
-    const ul = getOrCreateLegendList(chart, options.containerID);
+  afterUpdate(chart , args , options) {
+    console.log(args)
+    const ul = getOrCreateLegendList(options.containerID);
 
     // Remove old legend items
     while (ul.firstChild) {
@@ -31,11 +32,10 @@ export const htmlLegendPlugin: Plugin<"line"> = {
     }
 
     // Reuse the built-in legendItems generator
-    const items = chart?.options?.plugins?.legend?.labels?.generateLabels(
-      chart
-    ) as LegendItem[];
 
-    items?.forEach((item) => {
+    const items : LegendItem[] = chart?.options?.plugins?.legend?.labels?.generateLabels?.(chart) as LegendItem[]
+
+    items.forEach((item) => {
       const li = document.createElement("li");
       li.style.alignItems = "start";
       li.style.gap = "6px";
@@ -45,8 +45,8 @@ export const htmlLegendPlugin: Plugin<"line"> = {
 
       li.onclick = () => {
         chart.setDatasetVisibility(
-          item.datasetIndex,
-          !chart.isDatasetVisible(item.datasetIndex)
+          item.datasetIndex as number,
+          !chart.isDatasetVisible(item.datasetIndex as number)
         );
         chart.update();
       };

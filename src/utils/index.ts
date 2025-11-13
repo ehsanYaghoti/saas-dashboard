@@ -7,7 +7,7 @@ export function checkTheme() {
 }
 
 export function getWindowsWidth() {
-  let width = window.innerWidth;
+  const width = window.innerWidth;
   let widthString = "";
 
   switch (true) {

@@ -13,15 +13,15 @@ export const progressBar: Plugin = {
 
     ctx.save();
 
-    let barPercentage = data?.datasets[0]?.barPercentage as number;
-    let categoryPercentage = data?.datasets[0]?.categoryPercentage as number;
+    const barPercentage = data?.datasets[0]?.barPercentage as number;
+    const categoryPercentage = data?.datasets[0]?.categoryPercentage as number;
 
     const barHeight: number =
       (height / y.ticks.length) * barPercentage * categoryPercentage;
 
     data.datasets[0]?.data?.forEach((dataPoint, index: number) => {
       // label text
-      let fontSizeLabel = 12;
+      const fontSizeLabel = 12;
       ctx.font = `bold ${fontSizeLabel}px Inter`;
       if(checkTheme()){
         ctx.fillStyle = "white";
@@ -75,8 +75,8 @@ const sources : string[] = [
     "https://hatscripts.github.io/circle-flags/flags/de.svg",
 ]
 
-let images : HTMLImageElement[] = sources.map((image) => {
-  let img = new Image();
+const images : HTMLImageElement[] = sources.map((image) => {
+  const img = new Image();
   img.src = image;
     // img = image.key;
   return img

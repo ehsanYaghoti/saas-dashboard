@@ -102,7 +102,7 @@ export const dashedFullArc: DoughnutProps["plugin"] = {
   },
 };
 
-let images: HTMLImageElement[] = [img1, img2, img3].map((image) => {
+const images: HTMLImageElement[] = [img1, img2, img3].map((image) => {
   const img = new Image();
   img.src = image;
   return img;

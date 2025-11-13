@@ -25,7 +25,7 @@ export default function DataTableFacetedFilter<TData , TValue>({
   options
 }: DataTableFacetedFilterProps<TData , TValue>) {
 
-  let filterFacetingHandler = (
+  const filterFacetingHandler = (
     e: MouseEvent<HTMLButtonElement>,
   ) => {
     e.preventDefault();
