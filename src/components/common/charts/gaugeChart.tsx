@@ -17,7 +17,7 @@ import { Doughnut } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title, SubTitle);
 
-export const GaugeChart =  memo(function() {
+const GaugeChart =  memo(function() {
   const { theme } = useTheme();
 
   return (
@@ -64,3 +64,6 @@ export const GaugeChart =  memo(function() {
     </div>
   );
 })
+
+
+export default GaugeChart;

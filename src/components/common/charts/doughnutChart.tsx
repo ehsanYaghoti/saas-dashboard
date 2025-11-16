@@ -13,7 +13,7 @@ import { Doughnut } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
-export const DoughnutChart = memo(function () {
+const DoughnutChart = memo(function () {
   const { theme } = useTheme();
 
   return (
@@ -40,3 +40,5 @@ export const DoughnutChart = memo(function () {
     </div>
   );
 });
+
+export default DoughnutChart;
