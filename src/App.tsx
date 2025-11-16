@@ -7,6 +7,7 @@ import { ChartLine } from "./components/common/charts/lineChart";
 import { HorizontalBarChart } from "./components/common/charts/horizontalBarChart";
 import DashboardLayout from "./components/layouts/dashbaordLayout";
 import { lazy, Suspense } from "react";
+import { SkeletonCard } from "./components/loadings/skeletons/chartCard";
 
 const RadarChart = lazy(
   () => import("./components/common/charts/radarChart")
@@ -58,14 +59,14 @@ function App() {
             <ChartLine />
             <HorizontalBarChart />
             {/* <RadarChart /> */}
-            <Suspense fallback={<div>loading ...</div>}>
+            <Suspense fallback={<SkeletonCard />}>
               <RadarChart />
             </Suspense>
-            <Suspense fallback={<div>loading ...</div>}>
+            <Suspense fallback={<SkeletonCard />}>
               <DoughnutChart />
             </Suspense>
 
-            <Suspense fallback={<div>loading ...</div>}>
+            <Suspense fallback={<SkeletonCard />}>
               <GaugeChart />
             </Suspense>
           </div>
