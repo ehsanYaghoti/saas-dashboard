@@ -14,7 +14,25 @@
     }
 }
 
-/* @import url(./styles/sidebar.css); */
+::view-transition-old(root) {
+  navigation : auto;
+  animation-delay: 800ms;
+}
+
+::view-transition-new(root) {
+  navigation : auto;
+  animation : circle-in 1000ms;
+}
+
+@keyframes circle-in {
+  from {
+    clip-path : circle(0 at 92% 5%);
+  }
+  to {
+    clip-path : circle(130% at 50% 5%);
+  }
+}
+
 
 * {
     box-sizing: border-box;

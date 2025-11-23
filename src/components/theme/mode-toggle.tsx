@@ -12,35 +12,49 @@ import { useTheme } from "@/components/theme/theme-provider";
 export function ModeToggle() {
   const { setTheme } = useTheme();
 
+  function themeChanger(value: "light" | "dark" | "system") {
+    setTheme(value);
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="text-slate-800 !bg-white dark:!bg-slate-900 dark:text-white" >
+        <Button
+          variant="outline"
+          size="icon"
+          className="text-slate-800 !bg-white dark:!bg-slate-900 dark:text-white"
+        >
           <Sun className="h-[1.2rem] w-[1.2rem]  scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => {
-            setTheme("light")
-            // const ctx = document.getElementById('myChartHorizontalBar') as CanvasRenderingContext2D
-            // ctx?.reset()
-            // const ctx = document?.getElementById("myChartHorizontalBar")?.getContext("2d") as CanvasRenderingContext2D;
-
-            }}>
+        <DropdownMenuItem
+          onClick={() => {
+            document.startViewTransition(() => {
+              themeChanger("light");
+            });
+          }}
+        >
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => {
-            setTheme("dark")
-            // const ctx = document.getElementById('myChartHorizontalBar')
-            // const ctx = document?.getElementById("myChartHorizontalBar")?.getContext("2d") as CanvasRenderingContext2D;
-            // ctx.canvas.classList.add('text-white')
-
-            }}>
+        <DropdownMenuItem
+          onClick={() => {
+            document.startViewTransition(() => {
+              themeChanger("dark");
+            });
+          }}
+        >
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
+        <DropdownMenuItem
+          onClick={() => {
+            document.startViewTransition(() => {
+              themeChanger("system");
+            });
+          }}
+        >
           System
         </DropdownMenuItem>
       </DropdownMenuContent>
