@@ -1,10 +1,12 @@
 import type { LineProps } from "@/types/chart";
 import { titleTypography } from "../charts";
-import { checkTheme, getWindowsWidth } from "@/utils";
+import { getWindowsWidth } from "@/utils";
 
-export const lineChartOptions: LineProps["options"] = {
+type GetOptions = ({ isDark }: { isDark: boolean }) => LineProps["options"];
+
+export const getLineChartOptions: GetOptions = ({ isDark }) => ({
   responsive: true,
-  aspectRatio:  getWindowsWidth() === 'xxs' ? 1 : 3,
+  aspectRatio: getWindowsWidth() === "xxs" ? 2 : 3,
   maintainAspectRatio: true,
   animation: {
     duration: 2000,
@@ -38,7 +40,7 @@ export const lineChartOptions: LineProps["options"] = {
     },
   },
   layout: {
-    padding: getWindowsWidth() === 'xxs' ? 4 : 24,
+    padding: getWindowsWidth() === "xxs" ? 4 : 24,
   },
   interaction: {
     mode: "index",
@@ -68,19 +70,18 @@ export const lineChartOptions: LineProps["options"] = {
           return "";
         },
         color: () => {
-            // console.log("line chart theme " , checkTheme())
-            return checkTheme() ? "white"  : "#B0B9C8"
-        }
+          return isDark ? "white" : "#B0B9C8";
+        },
       },
       border: {
         // display: false,
-        color : checkTheme() ? "white" : "rgba(0,0,0,0.2)" ,
+        color: isDark ? "white" : "rgba(0,0,0,0.2)",
         dash: [3, 5],
       },
       grid: {
         color: (context) => {
           if (context.index % 5 === 0) {
-            return checkTheme() ? "white" : `rgba(0 , 0 , 0 , 0.1)`;
+            return isDark ? "white" : `rgba(0 , 0 , 0 , 0.1)`;
           }
           return "rgba(0 , 0 , 0 , 0.0)";
         },
@@ -111,7 +112,7 @@ export const lineChartOptions: LineProps["options"] = {
         },
         align: "start",
         color: () => {
-            return checkTheme() ? "white" : "rgba(0,0,0,0.5)"
+          return isDark ? "white" : "rgba(0,0,0,0.5)";
         },
         padding: 6,
         font: { weight: 600 },
@@ -121,7 +122,9 @@ export const lineChartOptions: LineProps["options"] = {
         // dash : [1 ,4]
       },
       grid: {
-        color : () => checkTheme() ? "rgb(255,255,255)" : "rgba(0,0,0,0.1)"
+        color: () => (isDark ? "rgb(255,255,255)" : "rgba(0,0,0,0.1)"),
+        backgroundColor: ["lightgrey", "white"],
+        backgroundColorRepeat: true,
         // drawOnChartArea: true,
         // display : false
       },
@@ -173,4 +176,4 @@ export const lineChartOptions: LineProps["options"] = {
       titleMarginBottom: 12,
     },
   },
-};
+})

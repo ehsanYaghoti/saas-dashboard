@@ -23,7 +23,7 @@ const getOrCreateLegendList = (id: string) => {
 export const htmlLegendPlugin: Plugin<"line"> = {
   id: "htmlLegend",
   afterUpdate(chart , args , options) {
-    console.log(args)
+
     const ul = getOrCreateLegendList(options.containerID);
 
     // Remove old legend items
@@ -65,8 +65,6 @@ export const htmlLegendPlugin: Plugin<"line"> = {
       boxSpan.style.width = "9px";
       boxSpan.style.rotate = "45deg";
 
-      const isDarkMode = checkTheme();
-
       // Label Section
       const textsSection = document.createElement("div");
       textsSection.style.display = "flex";
@@ -76,11 +74,15 @@ export const htmlLegendPlugin: Plugin<"line"> = {
 
       // Label title
       const labelTitle = document.createElement("span");
-      if (isDarkMode) {
-        labelTitle.style.color = "white";
-      } else {
-        labelTitle.style.color = "rgba(0,0,0,0.4)";
-      }
+    //   if (checkTheme()) {
+    //     // labelTitle.style.color = "white";
+    //     // chart.ctx.fillStyle = "white"
+    //     labelTitle.classList.replace('text-black/40' , 'text-white')
+    //   } else {
+    //     // labelTitle.style.color = "rgba(0,0,0,0.4)";
+    //     // chart.ctx.fillStyle = "rgba(0,0,0,0.4)"
+    //     labelTitle.classList.replace('text-white' ,'text-black/40')
+    //   }
       labelTitle.style.margin = "0";
       labelTitle.style.padding = "0";
       labelTitle.style.textDecoration = item.hidden ? "line-through" : "";
@@ -90,22 +92,24 @@ export const htmlLegendPlugin: Plugin<"line"> = {
 
       // Label paragraph
       const labelParagraph = document.createElement("p");
-      if (isDarkMode) {
-        labelTitle.style.color = "white";
-      } else {
-        labelParagraph.style.color = "rgba(0,0,0,0.8)";
-      }
+      console.log(checkTheme())
+    //   if (checkTheme()) {
+    //     labelParagraph.classList.replace('text-orange-500' , 'text-white')
+
+    //   } else {
+    //     labelParagraph.classList.replace('text-white' , 'text-orange-500')
+    //   }
       labelParagraph.style.display = "flex";
       labelParagraph.style.gap = "10px";
       labelParagraph.innerText = "$32,839.99";
 
       // Label paragraph percent
       const labelPercent = document.createElement("span");
-      if (isDarkMode) {
-        labelTitle.style.color = "white";
-      } else {
-        labelTitle.style.color = "rgba(0,0,0,0.4)";
-      }
+    //   if (checkTheme()) {
+    //     labelPercent.style.color = "white";
+    //   } else {
+    //     labelPercent.style.color = "rgba(0,0,0,0.4)";
+    //   }
       labelPercent.innerText = " • 55%";
 
       labelParagraph.appendChild(labelPercent);

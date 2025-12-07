@@ -12,12 +12,15 @@ import {
 import { Line } from "react-chartjs-2";
 
 import "chartjs-adapter-date-fns";
-import { lineChartOptions } from "@/constants/options/lineChartOptions";
+import {
+  getLineChartOptions,
+} from "@/constants/options/lineChartOptions";
 import { lineChartData } from "@/constants/data/lineChartData";
 import { htmlLegendPlugin, verticalHoverLine } from "@/plugins/chartsPlugins";
 import { Button } from "@/components/ui/button";
 import { Download, Ellipsis } from "lucide-react";
 import { memo } from "react";
+import { useTheme } from "@/components/theme/theme-provider";
 
 ChartJS.register(
   CategoryScale,
@@ -27,20 +30,25 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  TimeScale,
+  TimeScale
 );
 
-
 export const ChartLine = memo(function () {
+  const { theme } = useTheme();
 
   return (
     <div className="flex flex-col [grid-area:a]  bg-white dark:bg-dark-4 rounded-lg border  border-slate-200 shadow-md relative ">
-        <h3 className="text-lg font-semibold text-slate-700 dark:text-dark-text  mb-2 px-6 pt-6 pb-0">
-            Revenue Over Time
-        </h3>
+      <h3 className="text-lg font-semibold text-slate-700 dark:text-dark-text  mb-2 px-6 pt-6 pb-0">
+        Revenue Over Time
+      </h3>
       <div id="legend-container" className="px-6"></div>
       <Line
-        options={lineChartOptions}
+        options={getLineChartOptions({
+          isDark:
+            theme === "dark" ||
+            (theme === "system" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches),
+        })}
         data={lineChartData}
         plugins={[verticalHoverLine, htmlLegendPlugin]}
       />
@@ -54,4 +62,4 @@ export const ChartLine = memo(function () {
       </div>
     </div>
   );
-})
+});
