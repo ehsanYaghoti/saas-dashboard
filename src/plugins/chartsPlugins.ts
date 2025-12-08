@@ -22,9 +22,9 @@ const getOrCreateLegendList = (id: string) => {
 
 export const htmlLegendPlugin: Plugin<"line"> = {
   id: "htmlLegend",
-  afterUpdate(chart , args , options) {
+  afterUpdate(chart , _ , options) {
 
-    const ul = getOrCreateLegendList(options.containerID);
+    const ul = getOrCreateLegendList(options.containerID as string);
 
     // Remove old legend items
     while (ul.firstChild) {
